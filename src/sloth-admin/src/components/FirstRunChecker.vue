@@ -16,7 +16,7 @@ export default {
     }
   },
   methods: {
-    findConfFile() {
+    findConfFile() {      
       var status;
       fetch(window.location.protocol + "//" + window.location.hostname + "/sloth-admin-api/config/")
         .then((response) => {

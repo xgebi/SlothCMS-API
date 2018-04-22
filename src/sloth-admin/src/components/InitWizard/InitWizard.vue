@@ -4,6 +4,9 @@
       <div v-if="confFileProperties.notWritable">
         You need to change permissions on your filesystem.
       </div>
+      <div v-if="savingConfigFileError">
+        Error occured while writing config file.
+      </div>
       <init-wizard-step-one v-if="currentStep === 1" v-model="confFileState"></init-wizard-step-one>
       <init-wizard-step-two v-if="currentStep === 2" v-model="confFileState"></init-wizard-step-two>
       <init-wizard-step-three v-if="currentStep === 3" v-model="confFileState"></init-wizard-step-three>
@@ -34,11 +37,11 @@ export default {
   name: 'InitWizard',
   props: [ 'confFileProperties' ],
   data() {
-    console.log(this);
     return {
       currentStep: 1,
       confFileProperties: this.confFileProperties,
-      confFileState: {}
+      confFileState: {},
+      savingConfigFileError: false
     }
   },
   components: {
@@ -48,7 +51,31 @@ export default {
   },
   methods: {
     saveConfigFile() {
-      this.currentStep++;
+      var status;
+      fetch(window.location.protocol + "//" + window.location.hostname + "/sloth-admin-api/config-file/", {
+        body: JSON.stringify(this.confFileState),
+        cache: 'no-cache',
+        headers: {
+          'content-type' : 'application/json'
+        },
+        method: 'POST',
+        redirect: 'follow',
+        referrer: 'no-referrer'
+      })
+      .then((response) => {
+        status = response.status;
+        return response.json();
+      })
+      .then((data) => {
+        console.log(status);
+        if (status === 201) {
+          this.currentStep++;
+        } else {
+          this.savingConfigFileError = true;
+          this.currentStep = 1;
+        }
+      });
+      
     }
   }
 }
@@ -70,6 +97,8 @@ export default {
    grid-row: 2 / 3;
    display: grid;
     grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    grid-row-gap: 0.5rem;
  }
 
   .wizard .steps .step {

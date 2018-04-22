@@ -12,37 +12,42 @@ class Router {
   public function run($uri, $method) {
     $uri = trim($uri, $basePath);
     $pathNotFound = true;
-    $invalidMethod = true;    
+    $invalidMethod = true; 
 
     foreach ($this->routes as $route) {
-      
       if (preg_match($route->getPath(), $uri)) {
         $pathNotFound = false;
-        foreach ($route->getMethodController() as $routeMethod => $routeController) {
-          if (($method == $routeMethod) &&!is_null($routeController)) {
+        foreach ($route->getAllowedMethods() as $routeMethod) {
+          if ($method == $routeMethod) {
             $invalidMethod = false;
 
             $methodToCall = strtolower($method);
-
-            $controller = new $routeController($uri);
-            $controller->$methodToCall();
+            $controllerClass = $route->getController();
+            $controller = new $controllerClass($uri);
+            
+            if ($method == 'POST' || $method == 'PUT') {
+              $controller->$methodToCall(file_get_contents("php://input"));
+            } else {
+              $controller->$methodToCall();
+            }
 
             break;
           }
-        }
-        if ($invalidMethod && !$pathNotFound) {
-          header("405 Method Not Allowed", TRUE, 405);
-        }
-        if ($pathNotFound) {
-          header("404 Not Found", TRUE, 404);
-        }
-
+        }       
       }
+    }
+    if ($invalidMethod && !$pathNotFound) {
+      header("405 Method Not Allowed", TRUE, 405);
+      echo "{ \"errorCode\" : 405, \"errorMessage\": \"Method Not Allowed\" }";
+    }
+    if ($pathNotFound) {
+      header("404 Not Found", TRUE, 404);
+      echo "{ \"errorCode\" : 404, \"errorMessage\": \"Not Found\" }";
     }
   }
 
-  public function registerRoute($path, $method, $controller) {
-    $route = new Route($path, $method, $controller);
-    array_push($this->routes, $route);
+  public function registerRoute($path, $methods, $controller) {
+      $route = new Route($path, $methods, $controller);
+      array_push($this->routes, $route);
   }
 }

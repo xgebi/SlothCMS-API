@@ -3,16 +3,13 @@ namespace SlothAdminApi;
 
 class Route {
   private $path;
-  private $methodController = array(
-    "GET" => NULL,
-    "POST" => NULL,
-    "PUT" => NULL,
-    "DELETE" => NULL
-  );
+  private $allowedMethods;
+  private $controller;
 
-  function __construct($path, $method, $controller) {
+  function __construct($path, $methods, $controller) {
     $this->path = $path;
-    $this->methodController[$method] = $controller;
+    $this->controller = $controller;
+    $this->allowedMethods = $methods;
   }
 
   /**
@@ -25,22 +22,18 @@ class Route {
 
 
   /**
-   * Get the value of methodController
+   * Get the value of allowedMethods
    */ 
-  public function getMethodController()
+  public function getAllowedMethods()
   {
-    return $this->methodController;
+    return $this->allowedMethods;
   }
 
   /**
-   * Set the value of methodController
-   *
-   * @return  self
+   * Get the value of controller
    */ 
-  public function setMethodController($method, $controller) {
-    $this->$path = $path;
-    $this->$methodController[$method] = $controller;
-
-    return $this;
+  public function getController()
+  {
+    return $this->controller;
   }
 }
