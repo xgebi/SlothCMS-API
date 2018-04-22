@@ -26,7 +26,13 @@ class Router {
             $controller = new $controllerClass($uri);
             
             if ($method == 'POST' || $method == 'PUT') {
-              $controller->$methodToCall(file_get_contents("php://input"));
+              $body = file_get_contents("php://input");
+              if ($body) {
+                $controller->$methodToCall();
+              } else {
+                header("411 Length Required", TRUE, 411);
+                echo "{ \"errorCode\" : 411, \"errorMessage\": \"Length Required\" }";
+              }
             } else {
               $controller->$methodToCall();
             }
