@@ -30,8 +30,7 @@ class Router {
               if ($body) {
                 $controller->$methodToCall();
               } else {
-                header("411 Length Required", TRUE, 411);
-                echo "{ \"errorCode\" : 411, \"errorMessage\": \"Length Required\" }";
+                sendResponse(411, "Length Required");
               }
             } else {
               $controller->$methodToCall();
@@ -43,17 +42,20 @@ class Router {
       }
     }
     if ($invalidMethod && !$pathNotFound) {
-      header("405 Method Not Allowed", TRUE, 405);
-      echo "{ \"errorCode\" : 405, \"errorMessage\": \"Method Not Allowed\" }";
+      sendResponse(405, "Method Not Allowed");    
     }
     if ($pathNotFound) {
-      header("404 Not Found", TRUE, 404);
-      echo "{ \"errorCode\" : 404, \"errorMessage\": \"Not Found\" }";
+      sendResponse(404, "Not Found");
     }
   }
 
   public function registerRoute($path, $methods, $controller) {
       $route = new Route($path, $methods, $controller);
       array_push($this->routes, $route);
+  }
+
+  private function sendResponse($code, $message) {
+    header("$code $message", TRUE, $code);
+    echo "{ \"errorCode\" : $code, \"errorMessage\": \"$message\" }";
   }
 }
