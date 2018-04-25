@@ -1,14 +1,39 @@
 <?php
-namespace SlothAdminAPI;
 
+/**
+ * Route object
+ * 
+ * @author Sarah Gebauer
+ * @version 0.0.1
+ */
+namespace SlothAdminApi\Router;
+
+/**
+ * Route object
+ */
 require_once('route.php');
 
+/**
+ * @package SlothAdminApi\Router
+ */
 class Router {
 
+  /**
+   * @var String $basePath Base path for SlothCMS API
+   */
   private $basePath = '/sloth-admin-api';
 
+  /**
+   * @var Array A list of routes
+   */
   private $routes = [];
 
+  /**
+   * A function which starts routing
+   * 
+   * @param String $uri URI
+   * @param String $method Request method
+   */
   public function run($uri, $method) {
     $uri = trim($uri, $basePath);
     $pathNotFound = true;
@@ -49,11 +74,17 @@ class Router {
     }
   }
 
+  /**
+   * 
+   */
   public function registerRoute($path, $methods, $controller) {
       $route = new Route($path, $methods, $controller);
       array_push($this->routes, $route);
   }
 
+  /**
+   * 
+   */
   private function sendResponse($code, $message) {
     header("$code $message", TRUE, $code);
     echo "{ \"errorCode\" : $code, \"errorMessage\": \"$message\" }";

@@ -21,4 +21,9 @@ class ConfigChecker {
       }
     }    
   }
+
+  private function sendResponse($code, $message) {
+    header("$code $message", TRUE, $code);
+    echo "{ \"errorCode\" : $code, \"errorMessage\": \"$message\" }";
+  }
 }

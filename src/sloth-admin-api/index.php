@@ -4,7 +4,7 @@ require_once './router/router.php';
 require_once './configChecker.php';
 require_once './configHandler.php';
 
-$router = new SlothAdminAPI\Router();
+$router = new SlothAdminAPI\Router\Router();
 
 $router->registerRoute("/config/", ["GET"], "SlothAdminAPI\ConfigChecker");
 $router->registerRoute("/config-file/", ["GET", "POST"], "SlothAdminAPI\ConfigHandler");
