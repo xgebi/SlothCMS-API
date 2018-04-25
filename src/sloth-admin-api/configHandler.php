@@ -19,12 +19,22 @@ class ConfigHandler {
   }
 
   public function post($data) {    
-    if (file_put_contents($this->filename, $data)) {
-      header("HTTP/1.0 201 OK", TRUE, 201);
-      echo "{ \"configFileCreated\" : true }";
+    if ($this->isJson($data)) {    
+      if (file_put_contents($this->filename, $data)) {
+        header("HTTP/1.0 201 Created", TRUE, 201);
+        echo "{ \"configFileCreated\" : true }";
+      } else {
+        header("HTTP/1.0 500 Internal Server Error", TRUE, 500);
+        echo "{ \"configFileCreated\" : false }";
+      }
     } else {
-      header("HTTP/1.0 500 OK", TRUE, 500);
+      header("HTTP/1.0 405 Not Acceptable", TRUE, 405);
       echo "{ \"configFileCreated\" : false }";
     }
   }
+
+    private function isJson($string) {
+      json_decode($string);
+      return (json_last_error() == JSON_ERROR_NONE);
+     }
 }

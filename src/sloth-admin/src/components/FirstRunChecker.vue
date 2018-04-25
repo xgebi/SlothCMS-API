@@ -27,7 +27,7 @@ export default {
           if (status === 404) {
             this.$router.push({ name: 'InitWizard', params: { confFileProperties: data } });
           } else {
-            this.$router.push('LoginPage');
+            this.$router.push({ name: 'LoginScreen'});
           }
         })                
     }

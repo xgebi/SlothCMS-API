@@ -1,6 +1,6 @@
 <template>
-  <div class="step-3">
-    Here will be wizard!
+  <div class="step step-3">
+    All is set. You can log in now.
   </div>
 </template>
 
@@ -11,5 +11,4 @@ export default {
 </script>
 
 <style>
-
 </style>

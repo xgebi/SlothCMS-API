@@ -28,7 +28,7 @@ class Router {
             if ($method == 'POST' || $method == 'PUT') {
               $body = file_get_contents("php://input");
               if ($body) {
-                $controller->$methodToCall();
+                $controller->$methodToCall($body);
               } else {
                 sendResponse(411, "Length Required");
               }

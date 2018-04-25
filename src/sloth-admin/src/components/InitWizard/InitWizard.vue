@@ -23,7 +23,11 @@
         v-if="currentStep === 2"
         v-on:click="saveConfigFile()"
       >Finish</button>
-      <button v-if="currentStep === 3">Log in</button>
+      <button 
+        class="wizard-login-button"
+        v-if="currentStep === 3"
+        v-on:click="$router.push({ name: 'LoginScreen'})"
+      >Log in</button>
     </div>
   </div>
 </template>
@@ -105,5 +109,10 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr;    
     grid-column: 1 / 3;
+  }
+
+  .wizard-login-button {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
   }
 </style>
