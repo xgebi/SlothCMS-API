@@ -21,7 +21,7 @@ class Router {
   /**
    * @var String $basePath Base path for SlothCMS API
    */
-  private $basePath = '/sloth-admin-api';
+  private $basePath = '/ext/slothcms/sloth-admin-api';
 
   /**
    * @var Array A list of routes
@@ -35,8 +35,13 @@ class Router {
    * @param String $method Request method
    */
   public function run($uri, $method) {
-    $uri = trim($uri, $basePath);
+    /**
+     * @var Boolean unknown URI
+     */
     $pathNotFound = true;
+    /**
+     * @var Boolean HTTP method not supported for specified URI
+     */
     $invalidMethod = true; 
 
     foreach ($this->routes as $route) {
@@ -75,7 +80,11 @@ class Router {
   }
 
   /**
+   * Function which registers available routes
    * 
+   * @param String path specific URI
+   * @param Array methods available method for URI
+   * @param Object controller which handles specific URI
    */
   public function registerRoute($path, $methods, $controller) {
       $route = new Route($path, $methods, $controller);
@@ -83,7 +92,10 @@ class Router {
   }
 
   /**
+   * Helper function for returning error responses
    * 
+   * @param Integer HTTP status code
+   * @param String HTTP status message
    */
   private function sendResponse($code, $message) {
     header("$code $message", TRUE, $code);

@@ -1,17 +1,28 @@
 <?php
-namespace SlothAdminApi;
+/**
+ * Configuration file handler
+ * 
+ * @author Sarah Gebauer
+ * @version 0.0.1
+ */
+namespace SlothAdminApi\Configuration;
 
+/**
+ * @package SlothAdminApi\Configuration
+ */
 class ConfigHandler {
-  protected $filename = "./sloth.conf.json";
+  private $mainConfigFile = "./sloth.conf.json";
+  private $usersConfigFile = "./sloth.users.json";
+  private $contentConfigFile = "./sloth.content.json";
 
   function __construct($uri) {
   }
 
   public function get() {    
 
-    if (file_exists($this->filename)) {
+    if (file_exists($this->mainConfigFile)) {
       header("HTTP/1.0 200 OK", TRUE, 200);
-      echo file_get_contents($filename);
+      echo file_get_contents($mainConfigFile);
     } else {      
         header("HTTP/1.0 404 Not Found", TRUE, 404);
         echo "{ \"notFound\" : true }";
@@ -20,7 +31,7 @@ class ConfigHandler {
 
   public function post($data) {    
     if ($this->isJson($data)) {    
-      if (file_put_contents($this->filename, $data)) {
+      if (file_put_contents($this->mainConfigFile, $data)) {
         header("HTTP/1.0 201 Created", TRUE, 201);
         echo "{ \"configFileCreated\" : true }";
       } else {

@@ -17,3 +17,6 @@ src/Dockerfile
 *.ntvs*
 *.njsproj
 *.sln
+src/sloth.conf.json
+src/sloth.users.json
+src/sloth.content.json

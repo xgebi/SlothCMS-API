@@ -1,6 +1,15 @@
 <?php
-namespace SlothAdminApi;
+/**
+ * Configuration checker handler
+ * 
+ * @author Sarah Gebauer
+ * @version 0.0.1
+ */
+namespace SlothAdminApi\Configuration;
 
+/**
+ * @package SlothAdminApi\Configuration
+ */
 class ConfigChecker {
   function __construct($uri) {
   }
