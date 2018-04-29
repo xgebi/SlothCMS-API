@@ -42,8 +42,15 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
       $decodedData = \json_decode($data);
       
       if (property_exists($decodedData, "user")) {
-        $decodedData->user->adminPassword = password_hash($decodedData->user->adminPassword, PASSWORD_BCRYPT);
-        if (!file_put_contents($this->usersConfigFile, json_encode($decodedData->user))) {
+        $users = new class {};
+        $user = new class {};
+        $user->username = $decodedData->user->adminUsername;
+        $user->password = password_hash($decodedData->user->adminPassword, PASSWORD_BCRYPT);
+        $user->name = $decodedData->user->adminName;
+        $user->email = $decodedData->user->adminEmail;
+        $users->list = array( $user );
+        
+        if (!file_put_contents($this->usersConfigFile, json_encode($users))) {
           $overallWriteSuccess = false;
         }
       }

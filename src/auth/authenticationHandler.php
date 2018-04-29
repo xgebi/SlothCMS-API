@@ -2,6 +2,7 @@
 namespace SlothAdminApi\Auth;
 
 class AuthenticationHandler {
+  private $usersConfigFile = __DIR__ . "/../../../sloth.users.json";
   /**
    * 
    */
@@ -12,7 +13,7 @@ class AuthenticationHandler {
    * 
    */
   function post($credentials) {
-    
+    $users = \json_decode(file_get_contents($usersConfigFile));
   }
 
   

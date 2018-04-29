@@ -12,7 +12,7 @@ class AuthorizationHandler {
   /**
    * 
    */
-  function get($headers) {
+  function isAuthorized($headers) {
     
   }
 }
