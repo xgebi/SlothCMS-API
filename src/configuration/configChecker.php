@@ -8,20 +8,31 @@
 namespace SlothAdminApi\Configuration;
 
 /**
+ * Helpers object
+ */
+require_once(__DIR__ . '/../helpers.php');
+
+/**
  * @package SlothAdminApi\Configuration
  */
-class ConfigChecker {
+class ConfigChecker extends \SlothAdminApi\Helpers{
+  /**
+   * 
+   */
   function __construct($uri) {
   }
 
+  /**
+   * 
+   */
   public function get() {
-    $filename = "./sloth.conf.json";
+    $filename = __DIR__ . "/../../../sloth.conf.json";
 
     if (file_exists($filename)) {
       header("HTTP/1.0 200 OK", TRUE, 200);
       echo "{ \"notFound\" : false }";
     } else {      
-      if (\is_writable("./")) {
+      if (\is_writable(__DIR__ . "/../../")) {
         header("HTTP/1.0 404 Not Found", TRUE, 404);
         echo "{ \"notFound\" : true, \"notWritable\" : false }";
       } else {
@@ -31,8 +42,4 @@ class ConfigChecker {
     }    
   }
 
-  private function sendResponse($code, $message) {
-    header("$code $message", TRUE, $code);
-    echo "{ \"errorCode\" : $code, \"errorMessage\": \"$message\" }";
-  }
 }

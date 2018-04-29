@@ -12,11 +12,15 @@ namespace SlothAdminApi\Router;
  * Route object
  */
 require_once('route.php');
+/**
+ * Helpers object
+ */
+require_once(__DIR__ . '/../helpers.php');
 
 /**
  * @package SlothAdminApi\Router
  */
-class Router {
+class Router extends \SlothAdminApi\Helpers {
 
   /**
    * @var String $basePath Base path for SlothCMS API
@@ -60,7 +64,7 @@ class Router {
               if ($body) {
                 $controller->$methodToCall($body);
               } else {
-                sendResponse(411, "Length Required");
+                parent::sendResponse(411, "Length Required");
               }
             } else {
               $controller->$methodToCall();
@@ -72,10 +76,10 @@ class Router {
       }
     }
     if ($invalidMethod && !$pathNotFound) {
-      sendResponse(405, "Method Not Allowed");    
+      parent::sendResponse(405, "Method Not Allowed");    
     }
     if ($pathNotFound) {
-      sendResponse(404, "Not Found");
+      parent::sendResponse(404, "Not Found");
     }
   }
 
@@ -89,16 +93,5 @@ class Router {
   public function registerRoute($path, $methods, $controller) {
       $route = new Route($path, $methods, $controller);
       array_push($this->routes, $route);
-  }
-
-  /**
-   * Helper function for returning error responses
-   * 
-   * @param Integer HTTP status code
-   * @param String HTTP status message
-   */
-  private function sendResponse($code, $message) {
-    header("$code $message", TRUE, $code);
-    echo "{ \"errorCode\" : $code, \"errorMessage\": \"$message\" }";
   }
 }

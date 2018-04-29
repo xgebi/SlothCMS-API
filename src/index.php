@@ -1,12 +1,15 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-require_once './router/router.php';
-require_once './configChecker.php';
-require_once './configHandler.php';
+require_once  __DIR__ . '/router/router.php';
+require_once  __DIR__ . '/configuration/configChecker.php';
+require_once  __DIR__ . '/configuration/configHandler.php';
 
 $router = new SlothAdminAPI\Router\Router();
 
-$router->registerRoute("/config/", ["GET"], "SlothAdminAPI\ConfigChecker");
-$router->registerRoute("/config-file/", ["GET", "POST"], "SlothAdminAPI\ConfigHandler");
+$router->registerRoute("/config/", ["GET"], "SlothAdminApi\Configuration\ConfigChecker");
+$router->registerRoute("/config-file/", ["GET", "POST"], "SlothAdminApi\Configuration\ConfigHandler");
 
 $router->run($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
