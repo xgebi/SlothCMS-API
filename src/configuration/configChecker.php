@@ -17,13 +17,15 @@ require_once(__DIR__ . '/../helpers.php');
  */
 class ConfigChecker extends \SlothAdminApi\Helpers{
   /**
+   * Constructor function
    * 
+   * @param String URI
    */
   function __construct($uri) {
   }
 
   /**
-   * 
+   * Function which handles GET method
    */
   public function get() {
     $filename = __DIR__ . "/../../../sloth.conf.json";

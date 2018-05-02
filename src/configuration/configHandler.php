@@ -20,11 +20,19 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
   private $usersConfigFile = __DIR__ . "/../../../sloth.users.json";
   private $contentConfigFile = __DIR__ . "/../../../sloth.content.json";
 
+  /**
+   * Constructor function
+   * 
+   * @param String URI
+   */
   function __construct($uri) {
   }
 
-  public function get() {    
 
+  /**
+   * Function which handles GET method
+   */
+  public function get() {   
     if (file_exists($this->mainConfigFile)) {
       header("HTTP/1.0 200 OK", TRUE, 200);
       echo file_get_contents($mainConfigFile);
@@ -34,6 +42,11 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
     }
   }
 
+  /**
+   * Function which handles POST method
+   * 
+   * @param Object data
+   */
   public function post($data) {    
     $overallWriteSuccess = true;
 
@@ -80,6 +93,11 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
     }
   }
 
+  /**
+   * Function which detects if input string is JSON
+   * 
+   * @param String Possible JSON object
+   */
   private function isJson($string) {
     json_decode($string);
     return (json_last_error() == JSON_ERROR_NONE);
