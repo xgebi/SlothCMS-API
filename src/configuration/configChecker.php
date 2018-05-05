@@ -27,7 +27,7 @@ class ConfigChecker extends \SlothAdminApi\Helpers{
   /**
    * Function which handles GET method
    */
-  public function get() {
+  public function get($body = NULL) {
     $filename = __DIR__ . "/../../../sloth.conf.json";
 
     if (file_exists($filename)) {

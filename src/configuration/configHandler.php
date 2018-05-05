@@ -32,7 +32,7 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
   /**
    * Function which handles GET method
    */
-  public function get() {   
+  public function get($body = NULL) {   
     if (file_exists($this->mainConfigFile)) {
       header("HTTP/1.0 200 OK", TRUE, 200);
       echo file_get_contents($mainConfigFile);
