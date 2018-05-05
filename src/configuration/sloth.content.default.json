@@ -1,0 +1,18 @@
+{
+  "post_types" : [
+    {
+      "name": "post",
+      "languages" : ["en"],
+      "categories" : true,
+      "tags" : true,
+      "archive" : true
+    },
+    {
+      "name": "page",
+      "languages" : ["en"],
+      "categories" : true,
+      "tags" : true,
+      "archive" : false
+    }
+  ]
+}

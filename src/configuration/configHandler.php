@@ -68,14 +68,24 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
         }
       }
 
-      if (property_exists($decodedData, "website")) {        
-        if (!file_put_contents($this->mainConfigFile, json_encode($decodedData->website))) {
+      if (property_exists($decodedData, "website")) {    
+        $websiteSettings = new class {};
+        $websiteSettings->sitename = $decodedData->website->sitename;
+        $websiteSettings->motto = $decodedData->website->subtitle;
+        $websiteSettings->languages = ["en"];
+        $websiteSettings->timeZone = "Europe/Berlin";
+        $websiteSettings->dateFormat = "YY '/' mm '/' dd";
+        if (!file_put_contents($this->mainConfigFile, json_encode($websiteSettings))) {
           $overallWriteSuccess = false;
         }
       }
 
       if (property_exists($decodedData, "content")) {
         if (!file_put_contents($this->contentConfigFile, json_encode($decodedData->content))) {
+          $overallWriteSuccess = false;
+        }
+      } else if (!file_exists($this->contentConfigFile)) {
+        if (!file_put_contents($this->contentConfigFile, file_get_contents(__DIR__ . '/sloth.content.default.json'))) {
           $overallWriteSuccess = false;
         }
       }
