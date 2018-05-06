@@ -3,6 +3,9 @@ namespace SlothAdminApi\Auth;
 
 class AuthenticationHandler extends \SlothAdminApi\Helpers {
   private $usersConfigFile = __DIR__ . "/../../../sloth.users.json";
+
+  private $mainConfigFile = __DIR__ . "/../../../sloth.conf.json";
+  private $contentConfigFile = __DIR__ . "/../../../sloth.content.json";
   private $users;
   
   /**
@@ -17,11 +20,17 @@ class AuthenticationHandler extends \SlothAdminApi\Helpers {
    * 
    */
   function post($credentials) {
-    $result = $this->authenticate($credentials);
-    if (\strlen($result) > 0) {
+    $user = $this->authenticate($credentials);
+    if ($user) {
       header("200 OK", TRUE, 200);
-      header("Authorization: Token $result");
-      echo "{ \"errorCode\" : 200, \"errorMessage\": \"OK\" }"; 
+      header("Authorization: Token $user->token");
+      $responseBody = new class {};
+      $responseBody->config = \json_decode(file_get_contents($this->mainConfigFile));
+      $content = \json_decode(file_get_contents($this->contentConfigFile));
+      $responseBody->post_types = $content->post_types;
+      $responseBody->name = $user->name;
+      $responseBody->user_name = $user->username;
+      echo \json_encode($responseBody);
     } else {
       parent::sendResponse(403, "Forbidden");  
     }
@@ -37,9 +46,9 @@ class AuthenticationHandler extends \SlothAdminApi\Helpers {
           $value->validUntil = \time() + (30 * 60);
           $this->users->list[$key] = $value;
           file_put_contents($this->usersConfigFile, \json_encode($this->users));
-          return $value->token;
+          return $value;
         } else {
-          return "";
+          return NULL;
         }
       }
     }

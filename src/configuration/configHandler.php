@@ -35,7 +35,7 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
   public function get($body = NULL) {   
     if (file_exists($this->mainConfigFile)) {
       header("HTTP/1.0 200 OK", TRUE, 200);
-      echo file_get_contents($mainConfigFile);
+      echo "{ \"notFound\" : false }";
     } else {      
         header("HTTP/1.0 404 Not Found", TRUE, 404);
         echo "{ \"notFound\" : true }";
@@ -72,9 +72,9 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
         $websiteSettings = new class {};
         $websiteSettings->sitename = $decodedData->website->sitename;
         $websiteSettings->motto = $decodedData->website->subtitle;
-        $websiteSettings->languages = ["en"];
-        $websiteSettings->timeZone = "Europe/Berlin";
-        $websiteSettings->dateFormat = "YY '/' mm '/' dd";
+        $websiteSettings->languages = [$decodedData->website->language];
+        $websiteSettings->timeZone = $decodedData->website->timezone;
+        $websiteSettings->dateFormat = $decodedData->website->dateFormat;
         if (!file_put_contents($this->mainConfigFile, json_encode($websiteSettings))) {
           $overallWriteSuccess = false;
         }
