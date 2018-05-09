@@ -2,17 +2,21 @@
   "post_types" : [
     {
       "name": "post",
+      "displayName": "Post",
       "languages" : ["en"],
       "categories" : true,
       "tags" : true,
-      "archive" : true
+      "archive" : true,
+      "children" : false
     },
     {
       "name": "page",
+      "displayName": "Page",
       "languages" : ["en"],
       "categories" : true,
       "tags" : true,
-      "archive" : false
+      "archive" : false,
+      "children" : true
     }
   ]
 }
