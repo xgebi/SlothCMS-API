@@ -7,7 +7,14 @@
       "categories" : true,
       "tags" : true,
       "archive" : true,
-      "children" : false
+      "children" : false,
+      "optionalFields": [        
+        {
+          "name":"thumbnail",
+          "displayName": "Page thumbnail",
+          "type": "file"
+        }
+      ]
     },
     {
       "name": "page",
@@ -16,7 +23,14 @@
       "categories" : true,
       "tags" : true,
       "archive" : false,
-      "children" : true
+      "children" : true,
+      "optionalFields": [        
+        {
+          "name":"thumbnail",
+          "displayName": "Page thumbnail",
+          "type": "file"
+        }
+      ]
     }
   ]
 }
