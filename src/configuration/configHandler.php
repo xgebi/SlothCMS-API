@@ -72,9 +72,7 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
         $websiteSettings = new class {};
         $websiteSettings->sitename = $decodedData->website->sitename;
         $websiteSettings->motto = $decodedData->website->subtitle;
-        $websiteSettings->languages = [$decodedData->website->language];
         $websiteSettings->timeZone = $decodedData->website->timezone;
-        $websiteSettings->dateFormat = $decodedData->website->dateFormat;
         if (!file_put_contents($this->mainConfigFile, json_encode($websiteSettings))) {
           $overallWriteSuccess = false;
         }

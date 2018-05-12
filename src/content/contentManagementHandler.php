@@ -15,7 +15,7 @@ require_once(__DIR__ . '/../auth/authenticationHandler.php');
 /**
  * @package SlothAdminApi\Configuration
  */
-class ConntentManagementHandler extends \SlothAdminApi\Auth\AuthenticationHandler {
+class ContentManagementHandler {
   private $mainConfigFile = __DIR__ . "/../../../sloth.conf.json";
   private $usersConfigFile = __DIR__ . "/../../../sloth.users.json";
   private $contentConfigFile = __DIR__ . "/../../../sloth.content.json";

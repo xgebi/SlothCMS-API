@@ -36,7 +36,12 @@ class ConfigChecker extends \SlothAdminApi\Helpers{
     } else {      
       if (\is_writable(__DIR__ . "/../../")) {
         header("HTTP/1.0 404 Not Found", TRUE, 404);
-        echo "{ \"notFound\" : true, \"notWritable\" : false }";
+        $response = new class {};
+        $response->notFound = true;
+        $response->notWrittable = false;
+        $response->timeZones = \timezone_identifiers_list();
+        $response->defaultTimeZone = date_default_timezone_get();
+        echo json_encode($response);        
       } else {
         header("HTTP/1.0 404 Not Found", TRUE, 404);
         echo "{ \"notFound\" : true, \"notWritable\" : true }";

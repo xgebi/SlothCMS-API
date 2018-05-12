@@ -26,7 +26,8 @@ if (array_key_exists('Authorization', $headers)) {
   if ($authenticator->isAuthenticated($authHeader[0], $authHeader[1])) {
     $router->registerRoute("/logout/", ["PUT"], "SlothAdminApi\Auth\LogoutHandler");
     $router->registerRoute("/loggedIn/", ["PUT"], "SlothAdminApi\Auth\LoggedInHandler");
-    $router->registerRoute("/content/", ["GET", "POST", "PUT", "DELETE"], "SlothAdminApi\Content\ConntentManagementHandler");
+    $router->registerRoute("/post/", ["GET", "POST", "PUT", "DELETE"], "SlothAdminApi\Content\ContentManagementHandler");
+    $router->registerRoute("/posts/", ["GET"], "SlothAdminApi\Content\ContentManagementHandler");
   }
 }
 
