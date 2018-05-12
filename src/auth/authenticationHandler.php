@@ -56,7 +56,7 @@ class AuthenticationHandler extends \SlothAdminApi\Helpers {
 
 
   function isAuthenticated($username, $token) {
-    $users = \json_decode(file_get_contents($usersConfigFile));
+    $users = \json_decode(file_get_contents($this->usersConfigFile));
     foreach ($users->list as $key => $value) {
       if ($value->username == $username) {
         if ($value->token == $token && $value->validUntil >= \time()) {

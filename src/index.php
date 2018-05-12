@@ -9,13 +9,25 @@ require_once __DIR__ . '/configuration/configHandler.php';
 require_once __DIR__ . '/auth/authenticationHandler.php';
 require_once __DIR__ . '/auth/logoutHandler.php';
 require_once __DIR__ . '/auth/loggedInHandler.php';
+require_once __DIR__ . '/content/contentManagementHandler.php';
 
 $router = new SlothAdminAPI\Router\Router();
+$authenticator = new SlothAdminAPI\Auth\AuthenticationHandler();
+$headers = getallheaders();
+
 
 $router->registerRoute("/config/", ["GET"], "SlothAdminApi\Configuration\ConfigChecker");
 $router->registerRoute("/config-file/", ["GET", "POST"], "SlothAdminApi\Configuration\ConfigHandler");
 $router->registerRoute("/login/", ["POST"], "SlothAdminApi\Auth\AuthenticationHandler");
-$router->registerRoute("/logout/", ["PUT"], "SlothAdminApi\Auth\LogoutHandler");
-$router->registerRoute("/loggedIn/", ["PUT"], "SlothAdminApi\Auth\LoggedInHandler");
+
+if (array_key_exists('Authorization', $headers)) {
+  $authHeader = explode(" ",$headers['Authorization']);
+
+  if ($authenticator->isAuthenticated($authHeader[0], $authHeader[1])) {
+    $router->registerRoute("/logout/", ["PUT"], "SlothAdminApi\Auth\LogoutHandler");
+    $router->registerRoute("/loggedIn/", ["PUT"], "SlothAdminApi\Auth\LoggedInHandler");
+    $router->registerRoute("/content/", ["GET", "POST", "PUT", "DELETE"], "SlothAdminApi\Content\ConntentManagementHandler");
+  }
+}
 
 $router->run($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);

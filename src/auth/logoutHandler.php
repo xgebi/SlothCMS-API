@@ -27,20 +27,24 @@ class LogoutHandler extends \SlothAdminApi\Helpers{
   }
 
   /**
-   * Function which handles GET method
+   * Function which handles PUT method
    */
-  public function put($user) {
+  public function put($user = NULL) {
+    $headers = \getallheaders();
 
-    if (file_exists($this->usersConfigFile)) {
-      $users = \json_decode(file_get_contents($this->usersConfigFile));
-      $user = \json_decode($user);
-      foreach ($users->list as $key => $value) {
-        if ($value->username == $user->username) {        
-          if ($user->token == $value->token) {
-            $value->token = NULL;
-            $value->validUntil = \time();
-            $users->list[$key] = $value;
-            file_put_contents($this->usersConfigFile, \json_encode($users));
+    if (array_key_exists('Authorization', $headers)) {
+      $authHeader = explode(" ",$headers['Authorization']);
+
+      if (file_exists($this->usersConfigFile)) {
+        $users = \json_decode(file_get_contents($this->usersConfigFile));
+        foreach ($users->list as $key => $value) {
+          if ($value->username == $authHeader[0]) {        
+            if ($authHeader[1] == $value->token) {
+              $value->token = NULL;
+              $value->validUntil = \time();
+              $users->list[$key] = $value;
+              file_put_contents($this->usersConfigFile, \json_encode($users));
+            }
           }
         }
       }

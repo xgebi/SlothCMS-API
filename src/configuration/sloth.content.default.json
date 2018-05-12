@@ -29,6 +29,16 @@
           "name":"thumbnail",
           "displayName": "Page thumbnail",
           "type": "file"
+        },
+        {
+          "name":"textInput",
+          "displayName": "Text Input",
+          "type": "text"
+        },
+        {
+          "name":"secondBody",
+          "displayName": "Secondary",
+          "type": "textarea"
         }
       ]
     }

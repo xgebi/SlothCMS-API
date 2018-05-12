@@ -60,15 +60,18 @@ class Router extends \SlothAdminApi\Helpers {
             $controller = new $controllerClass($uri);
             
             $body = file_get_contents("php://input");
-            if ($method == 'POST' || $method == 'PUT') {              
+            $headers = \getallheaders();
+
+            if (array_key_exists("Content-Length", $headers) &&
+              $headers["Content-Length"] > 0) {
               if ($body) {
                 $controller->$methodToCall($body);
               } else {
                 parent::sendResponse(411, "Length Required");
               }
             } else {
-              $controller->$methodToCall($body);
-            }
+              $controller->$methodToCall();
+            }            
 
             break;
           }
