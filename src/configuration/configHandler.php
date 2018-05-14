@@ -48,6 +48,13 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
    * @param Object data
    */
   public function post($data) {    
+    if (file_exists($this->mainConfigFile) ||
+        file_exists($this->usersConfigFile) ||
+        file_exists($this->contentConfigFile)) {
+      header("HTTP/1.0 500 Internal Server Error", TRUE, 500);
+      echo "{ \"configFilesCreated\" : false }";
+      return NULL;
+    }
     $overallWriteSuccess = true;
 
     if ($this->isJson($data)) {  
@@ -72,7 +79,7 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
         $websiteSettings = new class {};
         $websiteSettings->sitename = $decodedData->website->sitename;
         $websiteSettings->motto = $decodedData->website->subtitle;
-        $websiteSettings->timeZone = $decodedData->website->timezone;
+        $websiteSettings->timeZone = date_default_timezone_get();
         if (!file_put_contents($this->mainConfigFile, json_encode($websiteSettings))) {
           $overallWriteSuccess = false;
         }

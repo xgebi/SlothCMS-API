@@ -15,11 +15,6 @@ $router = new SlothAdminAPI\Router\Router();
 $authenticator = new SlothAdminAPI\Auth\AuthenticationHandler();
 $headers = getallheaders();
 
-
-$router->registerRoute("/config/", ["GET"], "SlothAdminApi\Configuration\ConfigChecker");
-$router->registerRoute("/config-file/", ["GET", "POST"], "SlothAdminApi\Configuration\ConfigHandler");
-$router->registerRoute("/login/", ["POST"], "SlothAdminApi\Auth\AuthenticationHandler");
-
 if (array_key_exists('Authorization', $headers)) {
   $authHeader = explode(" ",$headers['Authorization']);
 
@@ -28,7 +23,12 @@ if (array_key_exists('Authorization', $headers)) {
     $router->registerRoute("/loggedIn/", ["PUT"], "SlothAdminApi\Auth\LoggedInHandler");
     $router->registerRoute("/post/", ["GET", "POST", "PUT", "DELETE"], "SlothAdminApi\Content\ContentManagementHandler");
     $router->registerRoute("/posts/", ["GET"], "SlothAdminApi\Content\ContentManagementHandler");
+    $router->registerRoute("/config-file/", ["GET", "PUT"], "SlothAdminApi\Configuration\ConfigHandler");
   }
+} else {
+  $router->registerRoute("/config/", ["GET"], "SlothAdminApi\Configuration\ConfigChecker");
+  $router->registerRoute("/login/", ["POST"], "SlothAdminApi\Auth\AuthenticationHandler");
+  $router->registerRoute("/config-file/", ["GET", "POST"], "SlothAdminApi\Configuration\ConfigHandler");
 }
 
 $router->run($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
