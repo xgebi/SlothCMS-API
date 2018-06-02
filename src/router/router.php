@@ -82,7 +82,7 @@ class Router extends \SlothAdminApi\Helpers {
       parent::sendResponse(405, "Method Not Allowed");    
     }
     if ($pathNotFound) {
-      parent::sendResponse(404, "Not Found");
+      parent::sendResponse(404, "Not Found 1");
     }
   }
 

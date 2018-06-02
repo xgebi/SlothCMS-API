@@ -72,20 +72,26 @@ class ContentManagementHandler {
         return NULL;
       }
     }
-    if (file_put_contents(self::CONTENT_DIRECTORY . "/" . $postTypeEntry->slug . ".json", json_encode($postTypeEntry))) {
-      // update meta data
-      $newEntry = new class {};
-      $newEntry->slug = $postTypeEntry->slug;
-      $newEntry->path = self::CONTENT_DIRECTORY . "/" . $postTypeEntry->slug . ".json";
+    if (mkdir(self::CONTENT_DIRECTORY . "/" . $postTypeEntry->slug)) {
+      if (file_put_contents(self::CONTENT_DIRECTORY . "/" . $postTypeEntry->slug . "/content.json", json_encode($postTypeEntry))) {
+        // update meta data
+        $newEntry = new class {};
+        $newEntry->slug = $postTypeEntry->slug;
+        $newEntry->path = self::CONTENT_DIRECTORY . "/" . $postTypeEntry->slug . ".json";
+        $newEntry->state = "published";
 
-      $data->list[] = $newEntry;
-      if (file_put_contents(self::CONTENT_DIRECTORY . "/sloth-meta.json", json_encode($data))) {
-        // return 201
-        header("HTTP/1.0 201 Created", TRUE, 201);
-        echo \json_encode($postTypeEntry);
+        $data->list[] = $newEntry;
+        if (file_put_contents(self::CONTENT_DIRECTORY . "/sloth-meta.json", json_encode($data))) {
+          // return 201
+          header("HTTP/1.0 201 Created", TRUE, 201);
+          echo \json_encode($postTypeEntry);
+        } else {
+          header("HTTP/1.0 500 Internal Server Error", TRUE, 500);
+          echo "{ \"metaFileError\" : true }";
+        }
       } else {
         header("HTTP/1.0 500 Internal Server Error", TRUE, 500);
-        echo "{ \"metaFileError\" : true }";
+        echo "{ \"contentFileError\" : true }";
       }
     } else {
       header("HTTP/1.0 500 Internal Server Error", TRUE, 500);

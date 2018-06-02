@@ -15,8 +15,8 @@ $router = new SlothAdminAPI\Router\Router();
 $authenticator = new SlothAdminAPI\Auth\AuthenticationHandler();
 $headers = getallheaders();
 
-if (array_key_exists('Authorization', $headers)) {
-  $authHeader = explode(" ",$headers['Authorization']);
+if (array_key_exists('authorization', $headers)) {
+  $authHeader = explode(" ", $headers['authorization']);
 
   if ($authenticator->isAuthenticated($authHeader[0], $authHeader[1])) {
     $router->registerRoute("/logout/", ["PUT"], "SlothAdminApi\Auth\LogoutHandler");
