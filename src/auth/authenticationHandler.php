@@ -1,4 +1,10 @@
 <?php
+/**
+ * Handler which handles authentication
+ * 
+ * @author Sarah Gebauer
+ * @version 0.0.1
+ */
 namespace SlothAdminApi\Auth;
 
 class AuthenticationHandler extends \SlothAdminApi\Helpers {
@@ -17,9 +23,13 @@ class AuthenticationHandler extends \SlothAdminApi\Helpers {
   }
 
   /**
+   * Function which handles POST method and serves as initial point around authentication
+   * 
+   * @param Array $headers
+   * @param String $credentials is a JSON String
    * 
    */
-  function post($credentials) {
+  function post($headers, $credentials) {
     $user = $this->authenticate($credentials);
     if ($user) {
       header("200 OK", TRUE, 200);
@@ -36,6 +46,12 @@ class AuthenticationHandler extends \SlothAdminApi\Helpers {
     }
   }
 
+  /**
+   * Function decodes user JSON and checks if the users is among users. 
+   * Optionally generate access token
+   * 
+   * @param String $user is JSON string representing user's credentials
+   */
   function authenticate($user) {
     $this->users = \json_decode(file_get_contents($this->usersConfigFile));
     $user = \json_decode($user);
@@ -55,6 +71,13 @@ class AuthenticationHandler extends \SlothAdminApi\Helpers {
   }
 
 
+  /**
+   * Functions checks if user is currently authenticated against the
+   * database of users
+   * 
+   * @param String $username
+   * @param String $token
+   */
   function isAuthenticated($username, $token) {
     $users = \json_decode(file_get_contents($this->usersConfigFile));
     foreach ($users->list as $key => $value) {

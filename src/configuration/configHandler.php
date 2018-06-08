@@ -31,8 +31,11 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
 
   /**
    * Function which handles GET method
+   * 
+   * @param Array $headers
+   * @param Object $body
    */
-  public function get($body = NULL) {   
+  public function get($headers, $body = NULL) {   
     if (file_exists($this->mainConfigFile)) {
       header("HTTP/1.0 200 OK", TRUE, 200);
       echo "{ \"notFound\" : false }";
@@ -45,9 +48,10 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
   /**
    * Function which handles POST method
    * 
+   * @param Array $headers
    * @param Object data
    */
-  public function post($data) {    
+  public function post($headers, $data) {    
     if (file_exists($this->mainConfigFile) ||
         file_exists($this->usersConfigFile) ||
         file_exists($this->contentConfigFile)) {

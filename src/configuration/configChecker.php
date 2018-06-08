@@ -29,8 +29,11 @@ class ConfigChecker extends \SlothAdminApi\Helpers{
 
   /**
    * Function which handles GET method
+   * 
+   * @param Array $headers
+   * @param Object $body
    */
-  public function get($body = NULL) {
+  public function get($headers, $body = NULL) {
 
     if (file_exists($this->mainConfigFile) &&
         file_exists($this->usersConfigFile) &&

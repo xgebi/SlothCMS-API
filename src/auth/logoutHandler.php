@@ -1,6 +1,6 @@
 <?php
 /**
- * Logout handler handler
+ * Logout handler
  * 
  * @author Sarah Gebauer
  * @version 0.0.1
@@ -28,8 +28,11 @@ class LogoutHandler extends \SlothAdminApi\Helpers{
 
   /**
    * Function which handles PUT method
+   * 
+   * @param Array $headers
+   * @param Object $user
    */
-  public function put($user = NULL) {
+  public function put($headers, $user = NULL) {
     $headers = \getallheaders();
 
     if (array_key_exists('Authorization', $headers)) {

@@ -1,6 +1,8 @@
 <?php
 /**
- * Logout handler handler
+ * LoggedIn handler
+ * 
+ * Checks if user is logged in and prolongs session
  * 
  * @author Sarah Gebauer
  * @version 0.0.1
@@ -29,16 +31,9 @@ class LoggedInHandler extends \SlothAdminApi\Helpers{
   /**
    * Function which handles GET method
    */
-  public function put($user = NULL) {
-    $headers = \getallheaders();
+  public function put($headers, $user = NULL) {
     $headersSent = false;
     $authHeader = "";
-
-    foreach ($headers as $header => $headerValue) {
-      if (strtolower($header) == "authorization") {
-        $authHeader = $headerValue;
-      }
-    }
 
     if (strlen($authHeader) > 0) {
       $authHeader = explode(" ",$headers['authorization']);
