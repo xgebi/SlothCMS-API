@@ -65,19 +65,20 @@ class Router extends \SlothAdminApi\Helpers {
               $header = [];
             }
 
+            $formattedHeaders = [];
             foreach ($headers as $headerItemKey => $headerItemValue) {
-              $headers[$headerItemKey] = strtolower($headerItemValue);
+              $formattedHeaders[strtolower($headerItemKey)] = $headerItemValue;
             }
 
-            if (array_key_exists("content-length", $headers) &&
-              $headers["content-length"] > 0) {
+            if (array_key_exists("content-length", $formattedHeaders) &&
+              $formattedHeaders["content-length"] > 0) {
               if ($body) {
-                $controller->$methodToCall($headers, $body);
+                $controller->$methodToCall($formattedHeaders, $body);
               } else {
                 parent::sendResponse(411, "Length Required");
               }
             } else {
-              $controller->$methodToCall($headers);
+              $controller->$methodToCall($formattedHeaders);
             }            
 
             break;
