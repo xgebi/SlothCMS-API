@@ -12,6 +12,15 @@ namespace SlothAdminApi\Content;
  */
 require_once(__DIR__ . '/../auth/authenticationHandler.php');
 
+$srcDir = dirname(__DIR__) . DIRECTORY_SEPARATOR . '../../vendor';
+require $srcDir . DIRECTORY_SEPARATOR . 'autoload.php';
+
+use PHPOnCouch\CouchClient;
+use PHPOnCouch\Exceptions\CouchException;
+
+$couchDsn = "http://admin:adminPwd@localhost:5984/";
+$couchDB = "example";
+
 /**
  * @package SlothAdminApi\Configuration
  */

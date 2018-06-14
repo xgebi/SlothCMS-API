@@ -24,11 +24,18 @@ if (array_key_exists('authorization', $headers)) {
     $router->registerRoute("/post/", ["GET", "POST", "PUT", "DELETE"], "SlothAdminApi\Content\ContentManagementHandler");
     $router->registerRoute("/posts/", ["GET"], "SlothAdminApi\Content\ContentManagementHandler");
     $router->registerRoute("/config-file/", ["GET", "PUT"], "SlothAdminApi\Configuration\ConfigHandler");
+    // /dashboard/
+    // /settings/
+    // /settings/users/
+    // /settings/user/
+    // /settings/content/
+    // /settings/content-list/
   }
 } else {
   $router->registerRoute("/config/", ["GET"], "SlothAdminApi\Configuration\ConfigChecker");
   $router->registerRoute("/login/", ["POST"], "SlothAdminApi\Auth\AuthenticationHandler");
   $router->registerRoute("/config-file/", ["GET", "POST"], "SlothAdminApi\Configuration\ConfigHandler");
+  // /ping/
 }
 
 $router->run($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);

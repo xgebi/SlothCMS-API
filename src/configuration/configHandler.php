@@ -20,6 +20,15 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
   private $usersConfigFile = __DIR__ . "/../../../sloth.users.json";
   private $contentConfigFile = __DIR__ . "/../../../sloth.content.json";
 
+  $srcDir = dirname(__DIR__) . DIRECTORY_SEPARATOR . '../../vendor';
+  require $srcDir . DIRECTORY_SEPARATOR . 'autoload.php';
+
+  use PHPOnCouch\CouchClient;
+  use PHPOnCouch\Exceptions\CouchException;
+
+  $couchDsn = "http://admin:adminPwd@localhost:5984/"; // this will need to be changed through configuration
+  $couchDB = "example";
+
   /**
    * Constructor function
    * 
