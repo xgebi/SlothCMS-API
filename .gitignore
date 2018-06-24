@@ -4,6 +4,4 @@ src/sloth-admin/dist
 
 /vendor/
 
-src/sloth.conf.json
-src/sloth.users.json
-src/sloth.content.json
+/src/lib/
