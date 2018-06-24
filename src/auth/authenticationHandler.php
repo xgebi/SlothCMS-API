@@ -7,11 +7,18 @@
  */
 namespace SlothAdminApi\Auth;
 
+/**
+ * Autoload of CouchDB
+ */
+require(__DIR__ .  '/../lib/autoload.php');
+
+use PHPOnCouch\CouchClient;
+use PHPOnCouch\Exceptions\CouchException;
+use PHPOnCouch\CouchDocument;
+
 class AuthenticationHandler extends \SlothAdminApi\Helpers {
   private $usersConfigFile = __DIR__ . "/../../../sloth.users.json";
 
-  private $mainConfigFile = __DIR__ . "/../../../sloth.conf.json";
-  private $contentConfigFile = __DIR__ . "/../../../sloth.content.json";
   private $users;
   
   /**
@@ -53,6 +60,14 @@ class AuthenticationHandler extends \SlothAdminApi\Helpers {
    * @param String $user is JSON string representing user's credentials
    */
   function authenticate($user) {
+    try {
+
+    } catch (CouchException $exception) {
+      return NULL;
+    }
+
+    return NULL;
+
     $this->users = \json_decode(file_get_contents($this->usersConfigFile));
     $user = \json_decode($user);
     foreach ($this->users->list as $key => $value) {

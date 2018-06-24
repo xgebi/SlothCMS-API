@@ -81,10 +81,14 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
         $user->name = $decodedData->user->adminName;
         $user->email = $decodedData->user->adminEmail;
         
-        $couchDB = new CouchClient($this->couchDsn, $this->userDB);
-        $couchDB->createDatabase();
-        $userDocument = new CouchDocument($couchDB);
-        $userDocument->set($user);
+        try {
+          $couchDB = new CouchClient($this->couchDsn, $this->userDB);
+          $couchDB->createDatabase();
+          $userDocument = new CouchDocument($couchDB);
+          $userDocument->set($user);
+        } catch (CouchException $e) {
+          $overallWriteSuccess = false;
+        }
       }
 
       if (property_exists($decodedData, "website")) {    
@@ -96,6 +100,16 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
           $overallWriteSuccess = false;
         }
       }
+
+      try {
+        $couchDB = new CouchClient($this->couchDsn, $this->contentTypesDB);
+        $couchDB->createDatabase();
+        $couchDB = new CouchClient($this->couchDsn, $this->contentDB);
+        $couchDB->createDatabase();
+      } catch (CouchException $e) {
+        $overallWriteSuccess = false;
+      }
+      
 
       if ($overallWriteSuccess) {
         header("HTTP/1.0 201 Created", TRUE, 201);
