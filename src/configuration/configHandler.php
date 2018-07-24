@@ -14,7 +14,7 @@ require_once(__DIR__ . '/../helpers.php');
 /**
  * Autoload of CouchDB
  */
-require(__DIR__ .  '/../lib/autoload.php');
+require(__DIR__ .  '/../../../lib/autoload.php');
 
 use PHPOnCouch\CouchClient;
 use PHPOnCouch\Exceptions\CouchException;
@@ -107,8 +107,8 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
         $couchDB = new CouchClient($this->couchDsn, $this->contentDB);
         $couchDB->createDatabase();
       } catch (CouchException $e) {
-        $overallWriteSuccess = false;
-      }
+          $overallWriteSuccess = false;
+        }
       
 
       if ($overallWriteSuccess) {
