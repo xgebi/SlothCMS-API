@@ -28,9 +28,7 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
   private $usersConfigFile = __DIR__ . "/../../../sloth.users.json";		
   private $contentTypesFile = __DIR__ . "/../../../sloth.content.types.json";
 
-  private $couchDsn = "http://admin:admin@localhost:5984/"; // this will need to be changed through configuration
-  private $userDB = "users";
-  private $contentTypesDB = "contentTypes";
+  private $couchDsn = "http://admin:admin@localhost:5984"; // this will need to be changed through configuration
   private $contentDB = "content";
 
   /**
@@ -69,7 +67,7 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
         file_exists($this->usersConfigFile) ||
         file_exists($this->contentTypesFile)) {
       header("HTTP/1.0 500 Internal Server Error", TRUE, 500);
-      echo "{ \"configFilesCreated\" : false }";
+      echo "{ \"configFilesCreated3\" : false }";
       return NULL;
     }
     $overallWriteSuccess = true;
@@ -106,14 +104,14 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
 
       }
 
-      try {
-        $couchDB = new CouchClient($this->couchDsn, $this->contentTypesDB);
-        $couchDB->createDatabase();
+      try {        
         $couchDB = new CouchClient($this->couchDsn, $this->contentDB);
+        echo $couchDB->getSessionCookie();
         $couchDB->createDatabase();
       } catch (CouchException $e) {
-          $overallWriteSuccess = false;
-        }
+        $overallWriteSuccess = false;
+        echo "hooah!";
+      }
       
 
       if ($overallWriteSuccess) {
@@ -121,11 +119,11 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
         echo "{ \"configFilesCreated\" : true }";
       } else {
         header("HTTP/1.0 500 Internal Server Error", TRUE, 500);
-        echo "{ \"configFilesCreated\" : false }";
+        echo "{ \"configFilesCreated1\" : false }";
       }
     } else {
       header("HTTP/1.0 405 Not Acceptable", TRUE, 405);
-      echo "{ \"configFilesCreated\" : false }";
+      echo "{ \"configFilesCreated2\" : false }";
     }
   }
 
