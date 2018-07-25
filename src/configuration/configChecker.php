@@ -17,6 +17,8 @@ require_once(__DIR__ . '/../helpers.php');
  */
 class ConfigChecker extends \SlothAdminApi\Helpers{
   private $mainConfigFile = __DIR__ . "/../../../sloth.conf.json";
+  private $usersConfigFile = __DIR__ . "/../../../sloth.users.json";		
+  private $contentTypesFile = __DIR__ . "/../../../sloth.content.types.json";
 
   /**
    * Constructor function
@@ -34,7 +36,9 @@ class ConfigChecker extends \SlothAdminApi\Helpers{
    */
   public function get($headers, $body = NULL) {
 
-    if (file_exists($this->mainConfigFile)) {
+    if (file_exists($this->mainConfigFile) &&
+        file_exists($this->usersConfigFile) &&
+        file_exists($this->contentTypesFile)) {
       header("HTTP/1.0 200 OK", TRUE, 200);
       echo "{ \"notFound\" : false }";
     } else {      
