@@ -40,4 +40,20 @@ The content types date is stored in file ```sloth.content.types.json``` and cont
 
 ## Content Management
 
+### Text
 
+Since SlothCMS utilizes generated files which are served to visitors, there's little to no need to store content in JSON files in a place which is accessible through web server. Therefore **all text content** shall reside in a director ```content``` which will be in the same directory as other configuration files.
+
+Every JSON file has following set of fields:
+* uuid
+* slug
+* array of language objects
+  * language shortcut
+  * primary language indicator
+  * array of fields
+    * field name
+    * field content
+
+### Images and other data
+
+Images and other file do need to be accessible for visitors of the web site and therefore these files shall reside in ```sloth-content``` directory alongside ```sloth-admin``` and ```sloth-admin-api```. All three directory names are reserved in SlothCMS.
