@@ -53,7 +53,7 @@ class LoggedInHandler extends \SlothAdminApi\Helpers{
             } else {
               $headersSent = true;
               header("HTTP/1.0 401 Unauthorized", TRUE, 401);
-              echo "{ \"loggedOut1\" : true }"; 
+              echo "{ \"loggedOut\" : true }"; 
             }
           }
         }        
@@ -61,7 +61,7 @@ class LoggedInHandler extends \SlothAdminApi\Helpers{
     }
     if (!$headersSent) {
       header("HTTP/1.0 401 Unauthorized", TRUE, 401);
-      echo "{ \"loggedOut2\" : true }";  
+      echo "{ \"loggedOut\" : true }";  
     }
   }
 
