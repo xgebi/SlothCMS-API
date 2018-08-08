@@ -20,6 +20,8 @@ The only rule around versioning is that the new version has to be bigger than th
 
 ### Toe template files
 
+Templates files is a bit complicated. This section will be amended during content management work.
+
 ```JSON
 {
   "templates": {
