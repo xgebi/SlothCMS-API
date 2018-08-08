@@ -41,3 +41,6 @@ There's also a possibility of ```else```:
 
 ## Importing
 
+Importing is an important feature for every templating system. To import another template use:
+
+```<# import template.toe #>``` or ```<# import folder/template.toe #>```
