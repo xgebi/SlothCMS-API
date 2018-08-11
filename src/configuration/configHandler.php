@@ -20,6 +20,9 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
   private $usersConfigFile = __DIR__ . "/../../../sloth.users.json";		
   private $contentTypesFile = __DIR__ . "/../../../sloth.content.types.json";
 
+  private $mainConfigFileDefaults = __DIR__ . "/sloth.main.conf.json";
+  private $contentConfigFileDefaults = __DIR__ . "/sloth.content.default.json";
+
   /**
    * Constructor function
    * 
@@ -81,15 +84,15 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
       }
 
       if (property_exists($decodedData, "website")) {    
-        $websiteSettings = new class {};
+        $websiteSettings = json_decode(file_get_contents($this->mainConfigFileDefaults));
         $websiteSettings->sitename = $decodedData->website->sitename;
-        $websiteSettings->motto = $decodedData->website->subtitle;
-        $websiteSettings->timeZone = date_default_timezone_get();
+        $websiteSettings->subtitle = $decodedData->website->subtitle;
+        $websiteSettings->timezone = date_default_timezone_get();
         if (!file_put_contents($this->mainConfigFile, json_encode($websiteSettings))) {
           $overallWriteSuccess = false;
         }
 
-        // TODO Content Types File
+        if (!file_put_contents($this->contentTypesFile, file_get_contents($this->contentConfigFileDefaults)));
 
       }
       
