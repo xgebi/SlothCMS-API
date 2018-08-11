@@ -13,18 +13,6 @@ namespace SlothAdminApi\Content;
 require_once(__DIR__ . '/../auth/authenticationHandler.php');
 
 /**
- * Autoload of CouchDB
- */
-require(__DIR__ .  '/../../../lib/autoload.php');
-
-use PHPOnCouch\CouchClient;
-use PHPOnCouch\Exceptions\CouchException;
-use PHPOnCouch\CouchDocument;
-
-$couchDsn = "http://admin:adminPwd@localhost:5984/";
-$couchDB = "example";
-
-/**
  * @package SlothAdminApi\Configuration
  */
 class ContentManagementHandler {

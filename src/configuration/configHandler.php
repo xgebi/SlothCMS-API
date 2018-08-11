@@ -11,14 +11,6 @@ namespace SlothAdminApi\Configuration;
  * Helpers object
  */
 require_once(__DIR__ . '/../helpers.php');
-/**
- * Autoload of CouchDB
- */
-require(__DIR__ .  '/../../../lib/autoload.php');
-
-use PHPOnCouch\CouchClient;
-use PHPOnCouch\Exceptions\CouchException;
-use PHPOnCouch\CouchDocument;
 
 /**
  * @package SlothAdminApi\Configuration
@@ -27,9 +19,6 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
   private $mainConfigFile = __DIR__ . "/../../../sloth.conf.json";
   private $usersConfigFile = __DIR__ . "/../../../sloth.users.json";		
   private $contentTypesFile = __DIR__ . "/../../../sloth.content.types.json";
-
-  private $couchDsn = "http://admin:admin@localhost:5984"; // this will need to be changed through configuration
-  private $contentDB = "content";
 
   /**
    * Constructor function
@@ -102,15 +91,6 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
 
         // TODO Content Types File
 
-      }
-
-      try {        
-        $couchDB = new CouchClient($this->couchDsn, $this->contentDB);
-        echo $couchDB->getSessionCookie();
-        $couchDB->createDatabase();
-      } catch (CouchException $e) {
-        $overallWriteSuccess = false;
-        echo "hooah!";
       }
       
 
