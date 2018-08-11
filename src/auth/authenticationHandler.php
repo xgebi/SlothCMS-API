@@ -9,6 +9,8 @@ namespace SlothAdminApi\Auth;
 
 class AuthenticationHandler extends \SlothAdminApi\Helpers {
   private $usersConfigFile = __DIR__ . "/../../../sloth.users.json";
+  private $mainConfigFile = __DIR__ . "/../../../sloth.conf.json";
+  private $contentTypesFile = __DIR__ . "/../../../sloth.content.types.json";
   private $users;
   
   /**
@@ -33,7 +35,7 @@ class AuthenticationHandler extends \SlothAdminApi\Helpers {
       header("Authorization: Token $user->token");
       $responseBody = new class {};
       $responseBody->config = \json_decode(file_get_contents($this->mainConfigFile));
-      $content = \json_decode(file_get_contents($this->contentConfigFile));
+      $content = \json_decode(file_get_contents($this->contentTypesFile));
       $responseBody->post_types = $content->post_types;
       $responseBody->name = $user->name;
       $responseBody->user_name = $user->username;

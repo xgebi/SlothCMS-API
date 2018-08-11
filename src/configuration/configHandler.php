@@ -21,7 +21,7 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
   private $contentTypesFile = __DIR__ . "/../../../sloth.content.types.json";
 
   private $mainConfigFileDefaults = __DIR__ . "/sloth.main.conf.json";
-  private $contentConfigFileDefaults = __DIR__ . "/sloth.content.default.json";
+  private $contentTypesConfigFileDefaults = __DIR__ . "/sloth.content.default.json";
 
   /**
    * Constructor function
@@ -92,7 +92,7 @@ class ConfigHandler extends \SlothAdminApi\Helpers{
           $overallWriteSuccess = false;
         }
 
-        if (!file_put_contents($this->contentTypesFile, file_get_contents($this->contentConfigFileDefaults)));
+        if (!file_put_contents($this->contentTypesFile, file_get_contents($this->contentTypesConfigFileDefaults)));
 
       }
       

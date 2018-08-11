@@ -32,14 +32,16 @@ class LoggedInHandler extends \SlothAdminApi\Helpers{
    * Function which handles GET method
    */
   public function put($headers, $user = NULL) {
-    $headersSent = false;
-    $authHeader = "";
+    $headersSent = false;    
 
-    if (strlen($authHeader) > 0) {
+    if (strlen($headers['authorization']) > 0) {
       $authHeader = explode(" ",$headers['authorization']);
 
       if (file_exists($this->usersConfigFile)) {
         $users = \json_decode(file_get_contents($this->usersConfigFile));
+
+        //print_r($users);
+        //print_r($authHeader);
 
         foreach ($users->list as $key => $value) {
           if ($value->username == $authHeader[0]) {        
@@ -53,7 +55,7 @@ class LoggedInHandler extends \SlothAdminApi\Helpers{
             } else {
               $headersSent = true;
               header("HTTP/1.0 401 Unauthorized", TRUE, 401);
-              echo "{ \"loggedOut\" : true }"; 
+              echo "{ \"loggedOut1\" : true }"; 
             }
           }
         }        
@@ -61,7 +63,7 @@ class LoggedInHandler extends \SlothAdminApi\Helpers{
     }
     if (!$headersSent) {
       header("HTTP/1.0 401 Unauthorized", TRUE, 401);
-      echo "{ \"loggedOut\" : true }";  
+      echo "{ \"loggedOut2\" : true }";  
     }
   }
 
