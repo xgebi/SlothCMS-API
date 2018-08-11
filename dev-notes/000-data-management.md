@@ -11,6 +11,7 @@ The main configuration file is called ```sloth.conf.json``` and contains fields:
 * time and date format
 * main language
 * secondary languages
+* current theme
 
 ## User management
 
