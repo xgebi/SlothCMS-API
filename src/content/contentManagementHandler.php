@@ -17,7 +17,7 @@ require_once(__DIR__ . '/../auth/authenticationHandler.php');
  */
 class ContentManagementHandler {
   const CONTENT_CONFIG_FILE = __DIR__ . "/../../../sloth.content.json";
-  const CONTENT_DIRECTORY = __DIR__ . "/../../sloth-content";
+  const CONTENT_DIRECTORY = __DIR__ . "/../../../sloth-content";
   const META_CONTENT_FILE = self::CONTENT_DIRECTORY . "/sloth-meta.json";
 
   /**
@@ -41,7 +41,7 @@ class ContentManagementHandler {
    * 
    * @param Object data
    */
-  public function post($postTypeEntry) {    
+  public function post($headers, $postTypeEntry) {    
     $postTypeEntry = json_decode($postTypeEntry);
     // open file with meta data of stored content
     if (file_exists(self::META_CONTENT_FILE)) {
@@ -77,8 +77,8 @@ class ContentManagementHandler {
         // update meta data
         $newEntry = new class {};
         $newEntry->slug = $postTypeEntry->slug;
-        $newEntry->path = self::CONTENT_DIRECTORY . "/" . $postTypeEntry->slug . ".json";
-        $newEntry->state = "published";
+        $newEntry->path = $postTypeEntry->slug . "/content.json";
+        $newEntry->state = "to-publish";
 
         $data->list[] = $newEntry;
         if (file_put_contents(self::CONTENT_DIRECTORY . "/sloth-meta.json", json_encode($data))) {
