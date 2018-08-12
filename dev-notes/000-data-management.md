@@ -46,14 +46,37 @@ The content types date is stored in file ```sloth.content.types.json``` and cont
 Since SlothCMS utilizes generated files which are served to visitors, there's little to no need to store content in JSON files in a place which is accessible through web server. Therefore **all text content** shall reside in a director ```content``` which will be in the same directory as other configuration files.
 
 Every JSON file has following set of fields:
-* uuid
+* uuid (optional)
 * slug
+* post type
 * array of language objects
   * language shortcut
   * primary language indicator
   * array of fields
     * field name
     * field content
+
+```JSON
+{
+  "uuid": "String",
+  "slug": "String",
+  "postType": "String",
+  "post": [
+    {
+      "language": "String",
+      "primaryLanguage": "Boolean",
+      "state": "String(published|draft|scheduled|publishing)",
+      "publishedDate": "String(ISO format of date)",
+      "fields": [
+        {
+          "name": "String",
+          "content": "String"
+        }
+      ]
+    }
+  ]
+}
+```
 
 ### Images and other data
 
