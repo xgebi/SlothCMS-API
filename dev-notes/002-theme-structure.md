@@ -32,11 +32,13 @@ Templates files is a bit complicated. This section will be amended during conten
       "body",
       "footer"
     ],
-    "specialTemplates": {
-      "postTypeName": "page",
-      "template": "page.toe",
-      "regions": ["sidebar"]
-    }
+    "specialTemplates": [
+      {
+        "postTypeName": "page",
+        "template": "page.toe",
+        "regions": ["sidebar"]
+      }
+    ]
   }
 }
 ```
