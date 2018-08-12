@@ -40,9 +40,6 @@ class LoggedInHandler extends \SlothAdminApi\Helpers{
       if (file_exists($this->usersConfigFile)) {
         $users = \json_decode(file_get_contents($this->usersConfigFile));
 
-        //print_r($users);
-        //print_r($authHeader);
-
         foreach ($users->list as $key => $value) {
           if ($value->username == $authHeader[0]) {        
             if (($authHeader[1] == $value->token) && ($value->validUntil >= \time())) {

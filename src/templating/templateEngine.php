@@ -16,9 +16,7 @@ class TemplateEngine {
   private $entries;
   
   function __construct($entries, $themePath) {
-    // TODO locate theme
-
-    // 
+    
   }
   
 }
