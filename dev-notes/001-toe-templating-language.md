@@ -33,11 +33,17 @@ There's also a possibility of ```else```:
 
 ## Loops
 
-*Toe*s at the moment have only ```while``` type loop with syntax:
+*Toe*s at the moment have ```while``` and ```foreach``` loop. The first one:
 
 ```<# while condition: #>```
 
 ```<# endwhile #>```
+
+And the second one:
+
+```<# foreach item in items #>```
+
+```<# endforeach #>```
 
 ## Importing
 

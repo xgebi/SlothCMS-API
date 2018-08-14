@@ -11,3 +11,25 @@
 ## Sitewide
 
 ```site_title```
+
+## Content specific
+
+### ```posts``` Object
+
+Contains data for posts, so be careful when using it.
+
+Basic ```posts``` contains all published posts regardless of post type.
+
+There's a recomendation to use parametrized posts object:
+
+```
+<# posts({ 
+  postType: "postType",  
+  numberOfPosts: 10,
+  postIndex: 0
+  }) #>
+```
+
+### ```post``` Object
+
+```post``` Object holds information for each post.
