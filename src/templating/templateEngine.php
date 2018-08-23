@@ -25,12 +25,16 @@ class TemplateEngine {
       // b. store post type, tags and categories
     }
     // 2. regenerate home page
+      // a. in each entry loop through languages
     // 3. if post type has archive
-      // a. regenerate archive
+      // a. in each entry loop through languages
+        // I. regenerate archive
     // 4. if post type has categories
-      // a. regenerate categories
+      // a. in each entry loop through languages
+        // I. regenerate categories
     // 5. if post type has tags
-      // a. regenerate tags
+      // a. in each entry loop through languages
+        // I. regenerate tags
   }
   
 }
