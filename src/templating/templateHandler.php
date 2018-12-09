@@ -69,7 +69,7 @@ class TemplateHandler extends \SlothAdminApi\Helpers {
     }
 
     // 5. Start TemplateEngine 
-    $templateEngine = new \SlothAdminApi\Templating\TemplateEngine($entries, $path);
+    $templateEngine = new \SlothAdminApi\Templating\TemplateEngine($entries, $path, $mainLanguage);
 
   }
   

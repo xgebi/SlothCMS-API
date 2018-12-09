@@ -13,6 +13,22 @@ The main configuration file is called ```sloth.conf.json``` and contains fields:
 * secondary languages
 * current theme
 
+* current theme name
+
+Example:
+
+```JSON
+{
+  "sitename": "SlothCMS Showcase",
+  "subtitle": "If use SlothCMS, you know what you're doing, I hope",
+  "timezone": "Europe/Berlin",
+  "timeDate": "n/d/Y G:i",
+  "mainLanguage": "en",
+  "languages": ["de", "et"],
+  "currentTheme": "red-star"
+}
+```
+
 ## User management
 
 The user data is stored in file ```sloth.users.json``` and contains fields:
