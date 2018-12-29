@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<stage>
+    <version></version>
+    <main-features>
+        <feature>Templating engine</feature>
+        <feature>Basic administration</feature>
+
+    </main-features>
+    <goals>
+        <goal card="sloth-9" done="false">Generate static web pages from mock data and Toe template</goal>
+        <goal card="sloth-10" done="false">Create post type settings page</goal>
+        <goal card="sloth-11" done="false">Create post format settings page</goal>
+        <goal card="sloth-12" done="false">Create create new post page</goal>
+        <goal card="sloth-13" done="false">Create dashboard page</goal>
+        <goal card="sloth-14" done="false">Process post type changes</goal>
+        <goal card="sloth-15" done="false">Process post format changes</goal>
+        <goal card="sloth-16" done="false">Process post changes</goal>
+        <goal card="sloth-17" done="false">Tie process post changes to static web pages generator</goal>
+        <goal card="sloth-18" done="false">Transform all existing administration pages to Toe templates</goal>
+        <goal card="sloth-19" done="false">Create a settings page</goal>
+    </goals>
+</stage>
