@@ -7,3 +7,11 @@
  */
 
 namespace  SlothCMS;
+
+require_once "router/Router.php";
+
+use SlothCMS\Router\Router;
+
+$router = new Router();
+
+echo "hello";

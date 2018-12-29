@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <stage>
-    <version></version>
+    <version>1</version>
     <main-features>
         <feature>Templating engine</feature>
         <feature>Basic administration</feature>
-
     </main-features>
     <goals>
         <goal card="sloth-9" done="false">Generate static web pages from mock data and Toe template</goal>
