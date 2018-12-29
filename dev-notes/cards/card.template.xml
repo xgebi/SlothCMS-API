@@ -1,0 +1,11 @@
+<?xml version="1" encoding="UTF-8"?>
+<card>
+    <name>Sloth </name>
+    <status></status>
+    <description>
+
+    </description>
+    <acceptance-criteria>
+        <criterium met="true|false"></criterium>
+    </acceptance-criteria>
+</card>

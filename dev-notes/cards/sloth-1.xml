@@ -1,0 +1,18 @@
+<?xml version="1" encoding="UTF-8"?>
+<card>
+    <name>Sloth 1</name>
+    <status>To Do</status>
+    <description>
+        Create a router to process requests and has life cycles depending on what they are processing.
+
+        For web pages, check for session validity.
+
+        For API requests allow for token checking.
+    </description>
+    <acceptance-criteria>
+        <criterium met="false">Create object Route which holds information: URI, methods, controller, permissions level and API/web page boolean</criterium>
+        <criterium met="false">Create Router class</criterium>
+        <criterium met="false">Router will handle API and web page requests separately</criterium>
+        <criterium met="false">Router will allow permission checks</criterium>
+    </acceptance-criteria>
+</card>

@@ -1,0 +1,11 @@
+<?xml version="1" encoding="UTF-8"?>
+<card>
+    <name>Sloth 3</name>
+    <status>To Do</status>
+    <description>
+        Initial configuration page creation
+    </description>
+    <acceptance-criteria>
+        <criterium met="false">Create initial configuration page which follows data requirements from 000 in general notes</criterium>
+    </acceptance-criteria>
+</card>
