@@ -7,7 +7,7 @@
         <feature>Configuration file generation</feature>
     </main-features>
     <goals>
-        <goal card="sloth-1" done="false">Router</goal>
+        <goal card="sloth-1" done="true">Router</goal>
         <goal card="sloth-2" done="false">Serving page</goal>
         <goal card="sloth-3" done="false">Initial configuration page creation</goal>
         <goal card="sloth-4" done="false">Initial configuration processing</goal>
