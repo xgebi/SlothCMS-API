@@ -1,11 +1,11 @@
 <?xml version="1" encoding="UTF-8"?>
 <card>
     <name>Sloth 2</name>
-    <status>Doing</status>
+    <status>Done</status>
     <description>
         Serving page in a standard way
     </description>
     <acceptance-criteria>
-        <criterium met="false">After a request from router, there is a standard way to serve **static** HTML page</criterium>
+        <criterium met="true">After a request from router, there is a standard way to serve **static** HTML page</criterium>
     </acceptance-criteria>
 </card>
