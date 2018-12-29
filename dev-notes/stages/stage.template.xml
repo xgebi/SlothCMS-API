@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<stage>
+    <version></version>
+    <main-features>
+        <feature></feature>
+    </main-features>
+    <goals>
+        <goal></goal>
+    </goals>
+    <tables>
+        <table>
+            <content-type></content-type>
+            <columns>
+                <column>
+                    <name></name>
+                    <type></type>
+                </column>
+            </columns>
+        </table>
+    </tables>
+</stage>

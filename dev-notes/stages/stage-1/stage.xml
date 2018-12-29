@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<stage>
+    <version>1</version>
+    <main-features>
+        <feature>Functioning PHP router</feature>
+        <feature>Standard way to serve HTML pages</feature>
+        <feature>Configuration file generation</feature>
+    </main-features>
+    <goals>
+        <goal card="sloth-1" done="false">Router</goal>
+        <goal card="sloth-2" done="false">Serving page</goal>
+        <goal card="sloth-3" done="false">Registration page creation</goal>
+        <goal card="sloth-4" done="false">Registration processing</goal>
+        <goal card="sloth-5" done="false">Configuration file generated</goal>
+        <goal card="sloth-6" done="false">Login page creation</goal>
+        <goal card="sloth-7" done="false">Login processing</goal>
+    </goals>
+</stage>
