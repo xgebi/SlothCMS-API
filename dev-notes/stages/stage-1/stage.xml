@@ -11,9 +11,8 @@
         <goal card="sloth-2" done="false">Serving page</goal>
         <goal card="sloth-3" done="false">Initial configuration page creation</goal>
         <goal card="sloth-4" done="false">Initial configuration processing</goal>
-        <goal card="sloth-5" done="false">Configuration file generated</goal>
-        <goal card="sloth-6" done="false">Login page creation</goal>
-        <goal card="sloth-7" done="false">Login processing</goal>
-        <goal card="sloth-8" done="false">Serving API</goal>
+        <goal card="sloth-5" done="false">Login page creation</goal>
+        <goal card="sloth-6" done="false">Login processing</goal>
+        <goal card="sloth-7" done="false">Serving API</goal>
     </goals>
 </stage>

@@ -1,0 +1,17 @@
+<?xml version="1" encoding="UTF-8"?>
+<card>
+    <name>Sloth 6</name>
+    <status>To Do</status>
+    <description>
+        Login processing
+    </description>
+    <acceptance-criteria>
+        <criterium met="false">Receive data from web page request</criterium>
+        <criterium met="false">Match data between sloth.users.json and received data</criterium>
+        <criterium met="false">When data match is found return success page</criterium>
+        <criterium met="false">When data match is not found, return error</criterium>
+    </acceptance-criteria>
+    <dependencies>
+        <depends-on>Sloth 5</depends-on>
+    </dependencies>
+</card>
