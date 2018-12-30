@@ -6,6 +6,16 @@
         <feature>Basic administration</feature>
     </main-features>
     <goals>
+        <goal card="sloth-" done="false">Detect beginning and ending of Toe syntax</goal>
+        <goal card="sloth-" done="false">Create mechanism to assign Toe template variables</goal>
+        <goal card="sloth-" done="false">Create mechanism to import templates</goal>
+        <goal card="sloth-" done="false">Execute printing a string and variable</goal>
+        <goal card="sloth-" done="false">Create mechanism to process if blocks</goal>
+        <goal card="sloth-" done="false">Create mechanism to process else blocks</goal>
+        <goal card="sloth-" done="false">Create mechanism to process while loop</goal>
+        <goal card="sloth-" done="false">Create mechanism to process foreach loop</goal>
+        <goal card="sloth-" done="false">Create hook system where keywords can be added to templating engine</goal>
+        <goal card="sloth-" done="false">Introduce Posts and Post object from 003</goal>
         <goal card="sloth-" done="false">Generate static web pages from mock data and Toe template</goal>
         <goal card="sloth-" done="false">Create post type settings page</goal>
         <goal card="sloth-" done="false">Create post format settings page</goal>
