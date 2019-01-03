@@ -6,3 +6,4 @@ src/sloth-admin/dist
 
 /src/lib/
 .idea
+.vscode
