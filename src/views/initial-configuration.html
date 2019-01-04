@@ -10,24 +10,26 @@
 </head>
 <body class="dialog">
      <div id="initial-configuration-dialog">
-        <label for="site-name">Sitename</label>
-        <input type="text" id="site-name" />
+        <form method="POST" action="/conf">
+            <label for="site-name">Sitename</label>
+            <input type="text" id="site-name" name="site-name" />
 
-        <label for="subtitle">Subtitle</label>
-        <input type="text" id="subtitle" />
+            <label for="subtitle">Subtitle</label>
+            <input type="text" id="subtitle" name="subtitle" />
 
-        <label for="language">Language</label>
-        <select id="language" >
-            <option value="en">English</option>
-        </select>
+            <label for="language">Language</label>
+            <select id="language" name="language">
+                <option value="en">English</option>
+            </select>
 
-        <label for="admin-username">Admin username</label>
-        <input type="text" id="admin-username" />
+            <label for="admin-username">Admin username</label>
+            <input type="text" id="admin-username" name="admin-username" />
 
-        <label for="admin-password">Admin password</label>
-        <input type="password" id="admin-password" />
+            <label for="admin-password">Admin password</label>
+            <input type="password" id="admin-password" name="admin-password" />
 
-        <input type="submit" value="Set up" />
+            <input type="submit" value="Set up" />
+        </form>
      </div>
 </body>
 </html>
