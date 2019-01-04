@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login | SlothCMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/style.css" />
+    <script src="/static/main.js"></script>
+</head>
+<body>
+    <div class="dialog">
+        <div class="error">Invalid credentials or non-existing user</div>
+        <form method="POST" action="/login">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" />
+
+            <input type="submit" value="Log in" />
+        </form>
+    </div>
+</body>
+</html>
