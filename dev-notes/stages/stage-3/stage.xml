@@ -2,9 +2,14 @@
 <stage>
     <version>1</version>
     <main-features>
-        <feature></feature>
+        <feature>Wordpress import</feature>
+        <feature>RSS feed generation</feature>
     </main-features>
     <goals>
-        <goal></goal>
+        <goal card="sloth-" done="false">Ability to import data from Wordpress's export file</goal>
+        <goal card="sloth-" done="false">Download images referenced in the export file</goal>
+        <goal card="sloth-" done="false">Change image references to "local" location</goal>
+        <goal card="sloth-" done="false">Generate RSS feed for each post type</goal>
+        <goal card="sloth-" done="false">Generate combined RSS feed</goal>
     </goals>
 </stage>
