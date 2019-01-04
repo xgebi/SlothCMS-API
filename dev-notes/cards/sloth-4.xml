@@ -6,9 +6,9 @@
         Initial configuration processing
     </description>
     <acceptance-criteria>
-        <criterium met="false">Get all fields from Sloth 3</criterium>
-        <criterium met="false">Create file sloth.conf.json</criterium>
-        <criterium met="false">Save fields into file sloth.conf.json</criterium>
+        <criterium met="true">Get all fields from Sloth 3</criterium>
+        <criterium met="true">Create file sloth.conf.json</criterium>
+        <criterium met="true">Save fields into file sloth.conf.json</criterium>
         <criterium met="false">Create file sloth.users.json</criterium>
         <criterium met="false">Write note about user management</criterium>
         <criterium met="false">Store admin user in sloth.users.json</criterium>
