@@ -8,23 +8,26 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/static/style.css" />
     <script src="/static/main.js"></script>
 </head>
-<body>
-    <!-- 
-        * sitename
-        * subtitle/motto
-        * timezone
-        * time and date format
-        * main language
-        * secondary languages
-        * current theme
-     -->
-
+<body class="dialog">
      <div id="initial-configuration-dialog">
-         <label for="site-name">Sitename</label>
-         <input type="text" id="site-name" />
+        <label for="site-name">Sitename</label>
+        <input type="text" id="site-name" />
 
-         <label for="subtitle">Subtitle</label>
-         <input type="text" id="subtitle" />
+        <label for="subtitle">Subtitle</label>
+        <input type="text" id="subtitle" />
+
+        <label for="language">Language</label>
+        <select id="language" >
+            <option value="en">English</option>
+        </select>
+
+        <label for="admin-username">Admin username</label>
+        <input type="text" id="admin-username" />
+
+        <label for="admin-password">Admin password</label>
+        <input type="password" id="admin-password" />
+
+        <input type="submit" value="Set up" />
      </div>
 </body>
 </html>
