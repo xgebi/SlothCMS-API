@@ -16,8 +16,8 @@ class Users {
      * Users constructor.
      * @param $users
      */
-    public function __construct($users) {
-        $this->users = count($users) > 1 ? $users : [];
+    public function __construct($users = null) {
+        $this->users = is_array($users) && count($users) > 1 ? $users : array();
     }
 
 
@@ -25,7 +25,12 @@ class Users {
      * @return false|string
      */
     public function toJson() {
-        return json_encode(get_object_vars($this));
+        $tempUsersArray = array();
+        echo "<br />";
+        foreach ($this->users as $user) {
+            $tempUsersArray[] = $user->getItemsAsArray();
+        }
+        return json_encode($tempUsersArray);
     }
 
     public function matchUser($username, $password) {

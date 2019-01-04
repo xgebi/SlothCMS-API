@@ -32,6 +32,10 @@ class User {
         $this->permissions = $permissions;
     }
 
+    public function getItemsAsArray() {
+        return get_object_vars($this);
+    }
+
     /**
      * @return mixed
      */

@@ -42,7 +42,7 @@ class InitialConfigurationController implements ControllerInterface {
 
         if ($this->createConfigFile($siteName, $siteSubtitle, $language) &&
             $this->createUsersFile($adminUsername, $adminPassword)) {
-            header("Location: /login");
+            //header("Location: /login");
         }
         // @TODO Add tickets for error handling
         $this->serveForm();
@@ -62,7 +62,8 @@ class InitialConfigurationController implements ControllerInterface {
 
     private function createUsersFile($adminUsername, $adminPassword) {
         $user = new User($adminUsername, password_hash($adminPassword, PASSWORD_BCRYPT), null, null, 0);
-        $users = new Users([$user]);
+        $users = new Users();
+        $users->addUser($user);
 
         $configFileHandle = fopen(__DIR__ . "/../../../../sloth.users.json", "w");
         $fwrite = fwrite($configFileHandle, $users->toJson());
