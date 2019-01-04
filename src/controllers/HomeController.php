@@ -11,7 +11,7 @@ namespace SlothCMS\Controllers;
 
 class HomeController
 {
-    public function run($args) {        
+    public function run($args = null) {
         readfile(__DIR__ . "/../views/home.html");
     }
 }

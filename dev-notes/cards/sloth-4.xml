@@ -11,7 +11,7 @@
         <criterium met="true">Save fields into file sloth.conf.json</criterium>
         <criterium met="true">Create file sloth.users.json</criterium>
         <criterium met="true">Write note about user management</criterium>
-        <criterium met="false">Store admin user in sloth.users.json</criterium>
+        <criterium met="true">Store admin user in sloth.users.json</criterium>
     </acceptance-criteria>
     <dependencies>
         <depends-on>Sloth 3</depends-on>
