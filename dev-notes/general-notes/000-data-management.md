@@ -36,6 +36,9 @@ The user data is stored in file ```sloth.users.json``` and contains fields:
 * password
 * display name
 * email
+* permissions
+
+To store the password hashes BCrypt algorithm is used.
 
 There are only four fields at the moment and due to GDPR there are no plans at the moment to expand it. For the same reason term "display name" instead of "full name" will be used throughout SlothCMS.
 

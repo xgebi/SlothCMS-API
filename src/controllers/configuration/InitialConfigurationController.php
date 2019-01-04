@@ -11,9 +11,13 @@ namespace SlothCMS\Controllers\Configuration;
 
 require_once __DIR__ . "/../ControllerInterface.php";
 require_once __DIR__ . "/../../models/Configuration.php";
+require_once __DIR__ . "/../../models/Users.php";
+require_once __DIR__ . "/../../models/User.php";
 
 use SlothCMS\Controllers\ControllerInterface;
 use SlothCMS\Models\Configuration;
+use SlothCMS\Models\Users;
+use SlothCMS\Models\User;
 
 class InitialConfigurationController implements ControllerInterface {
 
@@ -36,18 +40,36 @@ class InitialConfigurationController implements ControllerInterface {
         $adminUsername = filter_input(INPUT_POST, "admin-username");
         $adminPassword = filter_input(INPUT_POST, "admin-password");
 
+        if ($this->createConfigFile($siteName, $siteSubtitle, $language) &&
+            $this->createUsersFile($adminUsername, $adminPassword)) {
+            header("Location: /login");
+        }
+        // @TODO Add tickets for error handling
+        $this->serveForm();
+    }
+
+    private function createConfigFile($siteName, $siteSubtitle, $language) {
         $configuration = new Configuration($siteName, $siteSubtitle, date_default_timezone_get(), "Y-n-j G:i", $language, [], "" );
 
         $configFileHandle = fopen(__DIR__ . "/../../../../sloth.conf.json", "w");
         $fwrite = fwrite($configFileHandle, $configuration->toJson());
-        if (!$fwrite) {
-            fclose($configFileHandle);
-            // @TODO Add tickets for error handling
-            $this->serveForm();
-            return;
-        }
         fclose($configFileHandle);
+        if (!$fwrite) {
+            return false;
+        }
+        return true;
+    }
 
-        header("Location: /login");
+    private function createUsersFile($adminUsername, $adminPassword) {
+        $user = new User($adminUsername, password_hash($adminPassword, PASSWORD_BCRYPT), null, null, 0);
+        $users = new Users([$user]);
+
+        $configFileHandle = fopen(__DIR__ . "/../../../../sloth.users.json", "w");
+        $fwrite = fwrite($configFileHandle, $users->toJson());
+        fclose($configFileHandle);
+        if (!$fwrite) {
+            return false;
+        }
+        return true;
     }
 }
