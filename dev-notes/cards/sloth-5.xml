@@ -1,12 +1,12 @@
 <?xml version="1" encoding="UTF-8"?>
 <card>
     <name>Sloth 5</name>
-    <status>To Do</status>
+    <status>Done</status>
     <description>
         Login page creation
     </description>
     <acceptance-criteria>
-        <criterium met="false">Create HTML template for Login page</criterium>
-        <criterium met="false">Create error message when logging in fails</criterium>
+        <criterium met="true">Create HTML template for Login page</criterium>
+        <criterium met="true">Create error message when logging in fails</criterium>
     </acceptance-criteria>
 </card>
