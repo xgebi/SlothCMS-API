@@ -1,9 +1,8 @@
 src/sloth-admin/dist
-
 .DS_Store
-
 /vendor/
-
 /src/lib/
 .idea
 .vscode
+sloth.conf.json
+sloth.users.json

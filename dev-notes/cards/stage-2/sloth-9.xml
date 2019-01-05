@@ -6,7 +6,7 @@
         Detect beginning and ending of Toe syntax
     </description>
     <acceptance-criteria>
-        <criterium met="false">Create a service to process templates</criterium>
+        <criterium met="true">Create a service to process templates</criterium>
         <criterium met="false">Detect beginning of Toe code</criterium>
         <criterium met="false">Detect ending of Toe code</criterium>
         <criterium met="false">Extract string between the tags</criterium>
