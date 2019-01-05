@@ -16,8 +16,8 @@ require_once __DIR__ . "/../../models/User.php";
 
 use SlothCMS\Controllers\ControllerInterface;
 use SlothCMS\Models\Configuration;
-use SlothCMS\Models\Users;
 use SlothCMS\Models\User;
+use SlothCMS\Models\Users;
 
 class InitialConfigurationController implements ControllerInterface {
 
@@ -42,7 +42,7 @@ class InitialConfigurationController implements ControllerInterface {
 
         if ($this->createConfigFile($siteName, $siteSubtitle, $language) &&
             $this->createUsersFile($adminUsername, $adminPassword)) {
-            //header("Location: /login");
+            header("Location: /login");
         }
         // @TODO Add tickets for error handling
         $this->serveForm();
@@ -51,7 +51,7 @@ class InitialConfigurationController implements ControllerInterface {
     private function createConfigFile($siteName, $siteSubtitle, $language) {
         $configuration = new Configuration($siteName, $siteSubtitle, date_default_timezone_get(), "Y-n-j G:i", $language, [], "" );
 
-        $configFileHandle = fopen(__DIR__ . "/../../../../sloth.conf.json", "w");
+        $configFileHandle = fopen(__DIR__ . "/../../../sloth.conf.json", "w");
         $fwrite = fwrite($configFileHandle, $configuration->toJson());
         fclose($configFileHandle);
         if (!$fwrite) {
@@ -65,7 +65,7 @@ class InitialConfigurationController implements ControllerInterface {
         $users = new Users();
         $users->addUser($user);
 
-        $configFileHandle = fopen(__DIR__ . "/../../../../sloth.users.json", "w");
+        $configFileHandle = fopen(__DIR__ . "/../../../sloth.users.json", "w");
         $fwrite = fwrite($configFileHandle, $users->toJson());
         fclose($configFileHandle);
         if (!$fwrite) {
