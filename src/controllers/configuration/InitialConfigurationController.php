@@ -29,6 +29,12 @@ class InitialConfigurationController implements ControllerInterface {
         }
     }
 
+    public function runApi() {
+        header("HTTP/1.0 501 Not Implemented");
+        exit;
+    }
+
+
     private function serveForm($args = null) {
         readfile(__DIR__ . "/../../views/initial-configuration.html");
     }

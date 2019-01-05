@@ -1,11 +1,11 @@
 <?xml version="1" encoding="UTF-8"?>
 <card>
     <name>Sloth 7</name>
-    <status>To Do</status>
+    <status>Done</status>
     <description>
         Serving API
     </description>
     <acceptance-criteria>
-        <criterium met="false">After a API request, return JSON in a standard way</criterium>
+        <criterium met="true">After a API request, return JSON in a standard way</criterium>
     </acceptance-criteria>
 </card>
