@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<stage>
+    <version></version>
+    <main-features>
+        <feature>Cards which will be process independently on stages.</feature>
+    </main-features>
+    <goals>
+        <goal card="sloth-8" done="false">Remove old code</goal>
+    </goals>
+</stage>

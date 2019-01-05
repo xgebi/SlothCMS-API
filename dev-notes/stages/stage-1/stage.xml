@@ -14,6 +14,5 @@
         <goal card="sloth-5" done="true">Login page creation</goal>
         <goal card="sloth-6" done="true">Login processing</goal>
         <goal card="sloth-7" done="true">Serving API</goal>
-        <goal card="sloth-8" done="false">Remove old code</goal>
     </goals>
 </stage>
