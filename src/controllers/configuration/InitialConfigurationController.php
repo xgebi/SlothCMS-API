@@ -7,7 +7,7 @@
  * @package SlothCMS\Controllers\Configuration
  */
 
-namespace SlothCMS\Controllers\Configuration;
+namespace slothcms\controllers\configuration;
 
 require_once __DIR__ . "/../ControllerInterface.php";
 require_once __DIR__ . "/../../models/Configuration.php";

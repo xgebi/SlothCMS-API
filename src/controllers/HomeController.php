@@ -6,7 +6,7 @@
  * Time: 23:31
  */
 
-namespace SlothCMS\Controllers;
+namespace slothcms\controllers;
 
 
 class HomeController

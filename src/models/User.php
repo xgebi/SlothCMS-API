@@ -6,7 +6,7 @@
  * Time: 10:43 PM
  */
 
-namespace SlothCMS\Models;
+namespace slothcms\models;
 
 
 class User {
