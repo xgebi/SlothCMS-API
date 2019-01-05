@@ -1,6 +1,6 @@
 <?php
 
-namespace SlothCMS\Models;
+namespace slothcms\models;
 
 /**
  * Class Configuration holds information about SlothCMS's configuration

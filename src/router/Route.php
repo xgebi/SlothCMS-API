@@ -6,7 +6,7 @@
  * Time: 22:57
  */
 
-namespace SlothCMS\Router;
+namespace slothcms\router;
 
 
 class Route

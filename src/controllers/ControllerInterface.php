@@ -2,7 +2,7 @@
 /**
  * 
  */
-namespace SlothCMS\Controllers;
+namespace slothcms\controllers;
 
 interface ControllerInterface {
     public function run();
