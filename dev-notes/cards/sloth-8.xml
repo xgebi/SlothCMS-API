@@ -1,14 +1,11 @@
 <?xml version="1" encoding="UTF-8"?>
 <card>
-    <name>Sloth </name>
+    <name>Sloth 8</name>
     <status>To Do</status>
     <description>
-
+        Remove old code base from project
     </description>
     <acceptance-criteria>
-        <criterium met="false"></criterium>
+        <criterium met="false">src.old won't be on github</criterium>
     </acceptance-criteria>
-    <dependencies>
-        <depends-on>Sloth </depends-on>
-    </dependencies>
 </card>
