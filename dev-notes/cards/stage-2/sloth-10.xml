@@ -1,0 +1,15 @@
+<?xml version="1" encoding="UTF-8"?>
+<card>
+    <name>Sloth 10</name>
+    <status>To Do</status>
+    <description>
+        Create mechanism to assign Toe template variables
+    </description>
+    <acceptance-criteria>
+        <criterium met="false">Service accepts variables in a standard way</criterium>
+        <criterium met="false">Match </criterium>
+    </acceptance-criteria>
+    <dependencies>
+        <depends-on>Sloth 9</depends-on>
+    </dependencies>
+</card>
