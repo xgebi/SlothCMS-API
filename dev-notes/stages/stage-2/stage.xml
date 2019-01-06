@@ -8,24 +8,23 @@
     <goals>
         <goal card="sloth-9" done="true">Detect beginning and ending of Toe syntax</goal>
         <goal card="sloth-10" done="false">Create mechanism to assign Toe template variables</goal>
-        <goal card="sloth-11" done="true">Create mechanism to import templates</goal>
-        <goal card="sloth-" done="false">Execute printing a string and variable</goal>
-        <goal card="sloth-" done="false">Create mechanism to process if blocks</goal>
-        <goal card="sloth-" done="false">Create mechanism to process else blocks</goal>
-        <goal card="sloth-" done="false">Create mechanism to process while loop</goal>
-        <goal card="sloth-" done="false">Create mechanism to process foreach loop</goal>
-        <goal card="sloth-" done="false">Create hook system where keywords can be added to templating engine</goal>
-        <goal card="sloth-" done="false">Introduce Posts and Post object from 003</goal>
-        <goal card="sloth-" done="false">Generate static web pages from mock data and Toe template</goal>
-        <goal card="sloth-" done="false">Create post type settings page</goal>
-        <goal card="sloth-" done="false">Create post format settings page</goal>
-        <goal card="sloth-" done="false">Create create new post page</goal>
-        <goal card="sloth-11" done="false">Create dashboard page</goal>
-        <goal card="sloth-" done="false">Process post type changes</goal>
-        <goal card="sloth-" done="false">Process post format changes</goal>
-        <goal card="sloth-" done="false">Process post changes</goal>
-        <goal card="sloth-" done="false">Tie process post changes to static web pages generator</goal>
-        <goal card="sloth-" done="false">Transform all existing administration pages to Toe templates</goal>
-        <goal card="sloth-" done="false">Create a settings page</goal>
+        <goal card="sloth-11" done="true">Create dashboard page</goal>
+        <goal card="sloth-12" done="false">Execute printing a string and variable</goal>
+        <goal card="sloth-13" done="false">Create mechanism to import templates</goal>
+        <goal card="sloth-14" done="false">Create mechanism to process if blocks</goal>
+        <goal card="sloth-15" done="false">Create mechanism to process else blocks</goal>
+        <goal card="sloth-16" done="false">Create mechanism to process while loop</goal>
+        <goal card="sloth-17" done="false">Create mechanism to process foreach loop</goal>
+        <goal card="sloth-18" done="false">Introduce Posts and Post object from 003</goal>
+        <goal card="sloth-19" done="false">Create post type settings page</goal>
+        <goal card="sloth-20" done="false">Create post format settings page</goal>
+        <goal card="sloth-21" done="false">Tie process post changes to static web pages generator</goal>
+        <goal card="sloth-22" done="false">Create create new post page</goal>
+        <goal card="sloth-23" done="false">Process post type changes</goal>
+        <goal card="sloth-24" done="false">Process post format changes</goal>
+        <goal card="sloth-25" done="false">Process post changes</goal>
+        <goal card="sloth-26" done="false">Create a settings page</goal>
+        <goal card="sloth-27" done="false">Transform all existing administration pages to Toe templates</goal>
+        <goal card="sloth-28" done="false">Create hook system where keywords can be added to templating engine</goal>
     </goals>
 </stage>

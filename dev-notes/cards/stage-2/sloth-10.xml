@@ -7,7 +7,7 @@
     </description>
     <acceptance-criteria>
         <criterium met="false">Service accepts variables in a standard way</criterium>
-        <criterium met="false">Match </criterium>
+        <criterium met="false">Match a variable to a string between toe tags</criterium>
     </acceptance-criteria>
     <dependencies>
         <depends-on>Sloth 9</depends-on>
