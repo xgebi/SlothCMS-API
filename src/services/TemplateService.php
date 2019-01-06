@@ -21,16 +21,26 @@ class TemplateService {
      * @param $template
      * @param $args
      */
-    public function __construct($template, $args) {
+    public function __construct($template, $args = null) {
         $this->template = $template;
-
-        $this->processTemplate($template);
+        $this->args = $args;
     }
 
-    private function processTemplate($template) {
+    public function processTemplate() {
+        $isFinished = false;
         $openingTagPosition = -1;
-        while (($openingTagPosition = strpos($template, self::$OPENING_TAG)) > 0) {
-            $closingTagPosition = strpos($template, self::$CLOSING_TAG, $openingTagPosition);
+        $closingTagPosition = -1;
+        while (!$isFinished) {
+            $openingTagPosition = strpos($this->template, self::$OPENING_TAG, $closingTagPosition >= 0 ? $closingTagPosition : $openingTagPosition + 1);
+            $closingTagPosition = strpos($this->template, self::$CLOSING_TAG, $openingTagPosition >= 0 ? $openingTagPosition : 0);
+
+            if (!$openingTagPosition) {
+                break;
+            }
+
+            $toeCommand = trim(substr($this->template, $openingTagPosition + 2, $closingTagPosition - ($openingTagPosition + 2)));
+
+            echo $openingTagPosition . " " . $closingTagPosition . " between them is ". $toeCommand ."<br/>";
         }
     }
 

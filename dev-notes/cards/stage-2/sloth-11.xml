@@ -6,7 +6,7 @@
         Create dashboard page
     </description>
     <acceptance-criteria>
-        <criterium met="false">Create basic page structure</criterium>
-        <criterium met="false">Create templates for reusable parts</criterium>
+        <criterium met="true">Create basic page structure</criterium>
+        <criterium met="true">Create templates for reusable parts</criterium>
     </acceptance-criteria>
 </card>

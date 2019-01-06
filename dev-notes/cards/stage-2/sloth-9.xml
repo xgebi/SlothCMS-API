@@ -1,15 +1,15 @@
 <?xml version="1" encoding="UTF-8"?>
 <card>
     <name>Sloth 9</name>
-    <status>To Do</status>
+    <status>Done</status>
     <description>
         Detect beginning and ending of Toe syntax
     </description>
     <acceptance-criteria>
         <criterium met="true">Create a service to process templates</criterium>
-        <criterium met="false">Detect beginning of Toe code</criterium>
-        <criterium met="false">Detect ending of Toe code</criterium>
-        <criterium met="false">Extract string between the tags</criterium>
-        <criterium met="false">Write a tests</criterium>
+        <criterium met="true">Detect beginning of Toe code</criterium>
+        <criterium met="true">Detect ending of Toe code</criterium>
+        <criterium met="true">Extract string between the tags</criterium>
+        <criterium met="forgone">Write a tests</criterium>
     </acceptance-criteria>
 </card>
