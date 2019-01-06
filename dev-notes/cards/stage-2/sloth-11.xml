@@ -1,0 +1,12 @@
+<?xml version="1" encoding="UTF-8"?>
+<card>
+    <name>Sloth 11</name>
+    <status>Doing</status>
+    <description>
+        Create dashboard page
+    </description>
+    <acceptance-criteria>
+        <criterium met="true">Create basic page structure</criterium>
+        <criterium met="true">Create templates for reusable parts</criterium>
+    </acceptance-criteria>
+</card>

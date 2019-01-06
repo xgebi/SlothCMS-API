@@ -10,7 +10,11 @@
 
 ## Sitewide
 
-```site_title```
+```site```
+
+```site_name```
+
+```site_section``` e.g. Dashboard, New Post, etc.
 
 ## Content specific
 
