@@ -1,0 +1,17 @@
+<?xml version="1" encoding="UTF-8"?>
+<card>
+    <name>Sloth 13</name>
+    <status>To Do</status>
+    <description>
+        Create mechanism to import templates
+    </description>
+    <acceptance-criteria>
+        <criterium met="false">Detect "import" keyword</criterium>
+        <criterium met="false">Find file on path after "import" keyword</criterium>
+        <criterium met="false">Replace Toe tags with content of the found file</criterium>
+        <criterium met="false">If no file is found, remove Toe tags</criterium>
+    </acceptance-criteria>
+    <dependencies>
+        <depends-on>Sloth</depends-on>
+    </dependencies>
+</card>

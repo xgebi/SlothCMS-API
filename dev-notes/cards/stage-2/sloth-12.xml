@@ -1,0 +1,18 @@
+<?xml version="1" encoding="UTF-8"?>
+<card>
+    <name>Sloth 12</name>
+    <status>To Do</status>
+    <description>
+        Execute printing a string and variable
+    </description>
+    <acceptance-criteria>
+        <criterium met="false">String between double quotes (") is printed</criterium>
+        <criterium met="false">Match Toe variable with variable name in the template</criterium>
+        <criterium met="false">When Toe variable is defined, print variable value</criterium>
+        <criterium met="false">When Toe variable isn't defined, don't print anything</criterium>
+        <criterium met="false">After evaluation remove Toe tags</criterium>
+    </acceptance-criteria>
+    <dependencies>
+        <depends-on>Sloth</depends-on>
+    </dependencies>
+</card>

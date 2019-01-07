@@ -1,0 +1,19 @@
+<?xml version="1" encoding="UTF-8"?>
+<card>
+    <name>Sloth 14</name>
+    <status>To Do</status>
+    <description>
+        Create mechanism to process if blocks
+    </description>
+    <acceptance-criteria>
+        <criterium met="false">Detect that there's a statement starting with "if" keyword</criterium>
+        <criterium met="false">Validate expression inside brackets "()"</criterium>
+        <criterium met="false">Detect "endif" keyword</criterium>
+        <criterium met="false">Count number of "if" keywords until same level "endif" keyword appears</criterium>
+        <criterium met="false">When expression is met remove Toe tags with "if" and "endif" keywords</criterium>
+        <criterium met="false">When expression isn't met remove everything between the Toe tags and Toe tags as well</criterium>
+    </acceptance-criteria>
+    <dependencies>
+        <depends-on>Sloth</depends-on>
+    </dependencies>
+</card>
