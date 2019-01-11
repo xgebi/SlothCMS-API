@@ -50,3 +50,13 @@ And the second one:
 Importing is an important feature for every templating system. To import another template use:
 
 ```<# import template.toe #>``` or ```<# import folder/template.toe #>```
+
+## Variables
+
+Variables are defined by special character '#' and their name. An example would be: ```#variable```
+
+Assiging a value to the variable looks like:
+ 
+```#variable = 1```
+
+Variables in Toe templating language don't have types.

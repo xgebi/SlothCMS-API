@@ -1,0 +1,17 @@
+<?xml version="1" encoding="UTF-8"?>
+<card>
+    <name>Sloth 17</name>
+    <status>To Do</status>
+    <description>
+        Create mechanism to process foreach loop
+    </description>
+    <acceptance-criteria>
+        <acceptance-criteria>
+            <criterium met="false">Detect "foreach" keyword inside Toe tags</criterium>
+            <criterium met="false">Detect "endforeach" keyword inside Toe tags</criterium>
+            <criterium met="false">Get length of the input array/object</criterium>
+            <criterium met="false">Iterate through all items in input array/object</criterium>
+            <criterium met="false">Pass everything between "foreach" and "endforeach" keywords to evaluation</criterium>
+        </acceptance-criteria>
+    </acceptance-criteria>
+</card>

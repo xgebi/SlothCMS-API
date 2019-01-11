@@ -1,0 +1,14 @@
+<?xml version="1" encoding="UTF-8"?>
+<card>
+    <name>Sloth 16</name>
+    <status>To Do</status>
+    <description>
+        Create mechanism to process while loop
+    </description>
+    <acceptance-criteria>
+        <criterium met="false">Detect "while" keyword inside Toe tags</criterium>
+        <criterium met="false">Detect "endwhile" keyword inside Toe tags</criterium>
+        <criterium met="false">Evaluate expression inside brackets after "while" keyword</criterium>
+        <criterium met="false">Pass everything between "while" and "endwhile" keywords to evaluation</criterium>
+    </acceptance-criteria>
+</card>

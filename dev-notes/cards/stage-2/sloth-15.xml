@@ -7,8 +7,8 @@
     </description>
     <acceptance-criteria>
         <criterium met="false">Detect "else" keyword between "if" and "endif" keyword</criterium>
-        <criterium met="false">When "else" is on the same level as "if" and expression after "if" is true remove "if" Toe tags and everything between beginning of "else" Toe tag and ending of "endif" Toe tag</criterium>
-        <criterium met="false">When "else" is on the same level as "if" and expression after "if" is false remove "endif" Toe tags and everything between beginning of "if" Toe tag and ending of "else" Toe tag</criterium>
+        <criterium met="false">When "else" is on the same level as "if" and expression after "if" is true remove "if" Toe tags and everything between beginning of "else" Toe tag and ending of "endif" Toe tag and pass kept string to further evaluation</criterium>
+        <criterium met="false">When "else" is on the same level as "if" and expression after "if" is false remove "endif" Toe tags and everything between beginning of "if" Toe tag and ending of "else" Toe tag and pass kept string to further evaluation</criterium>
     </acceptance-criteria>
     <dependencies>
         <depends-on>Sloth 14</depends-on>

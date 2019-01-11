@@ -12,7 +12,4 @@
         <criterium met="false">When Toe variable isn't defined, don't print anything</criterium>
         <criterium met="false">After evaluation remove Toe tags</criterium>
     </acceptance-criteria>
-    <dependencies>
-        <depends-on>Sloth</depends-on>
-    </dependencies>
 </card>

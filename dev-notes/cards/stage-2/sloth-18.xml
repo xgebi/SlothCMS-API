@@ -1,0 +1,11 @@
+<?xml version="1" encoding="UTF-8"?>
+<card>
+    <name>Sloth 18</name>
+    <status>To Do</status>
+    <description>
+        Introduce Posts and Post object from 003
+    </description>
+    <acceptance-criteria>
+        <criterium met="false"></criterium>
+    </acceptance-criteria>
+</card>
