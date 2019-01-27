@@ -10,7 +10,7 @@
         <goal card="sloth-10" done="false">Create mechanism to assign Toe template variables</goal>
         <goal card="sloth-11" done="true">Create dashboard page</goal>
         <goal card="sloth-12" done="false">Execute printing a string and variable</goal>
-        <goal card="sloth-13" done="false">Create mechanism to import templates</goal>
+        <goal card="sloth-13" done="true">Create mechanism to import templates</goal>
         <goal card="sloth-14" done="false">Create mechanism to process if blocks</goal>
         <goal card="sloth-15" done="false">Create mechanism to process else blocks</goal>
         <goal card="sloth-16" done="false">Create mechanism to process while loop</goal>
