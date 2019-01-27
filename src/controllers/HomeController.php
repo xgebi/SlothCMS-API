@@ -8,10 +8,14 @@
 
 namespace slothcms\controllers;
 
+require_once __DIR__."/../services/TemplateService.php";
+
+use slothcms\services\TemplateService;
 
 class HomeController
 {
     public function run($args = null) {
-        readfile(__DIR__ . "/../views/home.html");
+        $templateService = new TemplateService(file_get_contents(__DIR__ . "/../views/home.html"));
+        print($templateService->processTemplate());
     }
 }
