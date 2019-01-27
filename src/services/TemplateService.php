@@ -17,8 +17,7 @@ class TemplateService {
     private static $OPENING_TAG = "<#";
     private static $CLOSING_TAG = "#>";
 
-    private $openingTagPosition = -1;
-    private $closingTagPosition = -1;
+    private $variableStack = [];
 
     /**
      * TemplateService constructor.
@@ -54,6 +53,16 @@ class TemplateService {
                 continue;
             }
 
+            if (is_int(strpos($toeCommand, ToeSymbols::Assign)) && strpos($toeCommand, ToeSymbols::Assign) == 0) {
+                $this->processVariableAssignment($toeCommand, $openingTagPosition, $closingTagPosition);
+                continue;
+            }
+
+            if (is_int(strpos($toeCommand, ToeSymbols::Print)) && strpos($toeCommand, ToeSymbols::Print) == 0) {
+                $this->processPrintCommand($toeCommand, $openingTagPosition, $closingTagPosition);
+                continue;
+            }
+
         }
 
         return $this->template;
@@ -67,6 +76,48 @@ class TemplateService {
         } else {
             $this->template = substr_replace($this->template, "", $start, ($end + 2) - $start);
         }
+    }
+
+    private function processVariableAssignment($toeCommand, $start, $end) {
+        $cmdParameterArray = explode(" ",  $toeCommand);
+
+        if (is_int(strpos($cmdParameterArray[2], '"'))) {
+            $temp = implode(" ", array_slice($cmdParameterArray, 2));
+            array_splice($cmdParameterArray, 2);
+            $cmdParameterArray[2] = substr($temp, 1, strlen($temp) > strrpos($temp, '"') ? strlen($temp) - 2 : strrpos($temp, '"') - 1);
+        }
+
+        $this->variableStack[$cmdParameterArray[1]] = $cmdParameterArray[2];
+        $this->template = substr_replace($this->template, "", $start, ($end + 2) - $start);
+    }
+
+    private function processPrintCommand($toeCommand, $start, $end) {
+        $cmdParameterArray = explode(" ",  $toeCommand);
+        //print_r($cmdParameterArray);
+        if (is_int(strpos($cmdParameterArray[1], '"'))) {
+            $temp = implode(" ", array_slice($cmdParameterArray, 2));
+            array_splice($cmdParameterArray, 2);
+            $cmdParameterArray[1] = substr($temp, 1, strlen($temp) > strrpos($temp, '"') ? strlen($temp) - 2 : strrpos($temp, '"') - 1);
+        }
+      //  print_r($cmdParameterArray);
+        if (is_numeric($cmdParameterArray[1])) {
+            $this->template = substr_replace($this->template, $cmdParameterArray[1], $start, ($end + 2) - $start);
+            return;
+        }
+    //    echo "a";
+        if (is_string($cmdParameterArray[1]) && is_int(strpos($cmdParameterArray, '"')) && strpos($cmdParameterArray, '"') == 0) {
+            $this->template = substr_replace($this->template, $cmdParameterArray[1], $start, ($end + 2) - $start);
+            return;
+        }
+  //      echo "b";
+        if (array_key_exists($cmdParameterArray[1], $this->variableStack)) {
+            $this->template = substr_replace($this->template, $this->variableStack[$cmdParameterArray[1]], $start, ($end + 2) - $start);
+            return;
+        }
+//        echo "c";
+        $this->template = substr_replace($this->template, "", $start, ($end + 2) - $start);
+
+
     }
 
 

@@ -6,8 +6,8 @@
         Create mechanism to assign Toe template variables
     </description>
     <acceptance-criteria>
-        <criterium met="false">Service accepts variables in a standard way</criterium>
-        <criterium met="false">Match a variable to a string between toe tags</criterium>
+        <criterium met="true">Service accepts variables in a standard way</criterium>
+        <criterium met="true">Match a variable to a string between toe tags</criterium>
     </acceptance-criteria>
     <dependencies>
         <depends-on>Sloth 9</depends-on>
