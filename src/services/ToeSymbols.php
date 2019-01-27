@@ -11,4 +11,6 @@ namespace SlothCMS\services;
 
 class ToeSymbols {
     const Import = "import";
+    const Print = "=";
+    const Assign = "assign";
 }
