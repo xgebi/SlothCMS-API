@@ -6,11 +6,11 @@
         Create mechanism to process if blocks
     </description>
     <acceptance-criteria>
-        <criterium met="false">Detect that there's a statement starting with "if" keyword</criterium>
-        <criterium met="false">Validate expression inside brackets "()"</criterium>
-        <criterium met="false">Detect "endif" keyword</criterium>
-        <criterium met="false">Count number of "if" keywords until same level "endif" keyword appears</criterium>
-        <criterium met="false">When expression is met remove Toe tags with "if" and "endif" keywords and pass everything in between to evaluation</criterium>
-        <criterium met="false">When expression isn't met remove everything between the Toe tags and Toe tags as well</criterium>
+        <criterium met="true">Detect that there's a statement starting with "if" keyword</criterium>
+        <criterium met="true">Validate expression inside brackets "()"</criterium>
+        <criterium met="true">Detect "endif" keyword</criterium>
+        <criterium met="true">Count number of "if" keywords until same level "endif" keyword appears</criterium>
+        <criterium met="true">When expression is met remove Toe tags with "if" and "endif" keywords and pass everything in between to evaluation</criterium>
+        <criterium met="true">When expression isn't met remove everything between the Toe tags and Toe tags as well</criterium>
     </acceptance-criteria>
 </card>
