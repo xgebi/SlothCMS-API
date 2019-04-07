@@ -11,7 +11,7 @@
         <goal card="sloth-11" done="true">Create dashboard page</goal>
         <goal card="sloth-12" done="true">Execute printing a string and variable</goal>
         <goal card="sloth-13" done="true">Create mechanism to import templates</goal>
-        <goal card="sloth-14" done="false">Create mechanism to process if blocks</goal>
+        <goal card="sloth-14" done="true">Create mechanism to process if blocks</goal>
         <goal card="sloth-15" done="false">Create mechanism to process else blocks</goal>
         <goal card="sloth-16" done="false">Create mechanism to process while loop</goal>
         <goal card="sloth-17" done="false">Create mechanism to process foreach loop</goal>

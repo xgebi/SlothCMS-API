@@ -13,4 +13,15 @@ class ToeSymbols {
     const Import = "import";
     const Print = "=";
     const Assign = "assign";
+    const If = "if";
+
+    const Equals = "==";
+    const GreaterThan = ">";
+    const GreaterEqualThan = ">=";
+    const LessThan = "<";
+    const LessEqualThan = "<=";
+    const IsNot = "!=";
+    const And = "&&";
+    const Or = "||";
+
 }
