@@ -8,7 +8,7 @@
 
 ```stylesheets```
 
-## Sitewide
+## Site wide
 
 ```site```
 
@@ -24,7 +24,7 @@ Contains data for posts, so be careful when using it.
 
 Basic ```posts``` contains all published posts regardless of post type.
 
-There's a recomendation to use parametrized posts object:
+There's a recommendation to use parametrized posts object:
 
 ```
 <# posts({ 
