@@ -6,6 +6,6 @@
         Remove old code base from project
     </description>
     <acceptance-criteria>
-        <criterium met="false">src.old won't be on github</criterium>
+        <criterium met="true">src.old won't be on github</criterium>
     </acceptance-criteria>
 </card>
