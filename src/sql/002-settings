@@ -1,0 +1,6 @@
+CREATE TABLE settings (
+    settings_name       VARCHAR(40) PRIMARY KEY,
+    display_name        VARCHAR(100),
+    settings_value      VARCHAR(255),
+    section_id          VARCHAR(40)
+);
