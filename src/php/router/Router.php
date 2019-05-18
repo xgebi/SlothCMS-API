@@ -21,7 +21,7 @@ class Router
 
     public function registerRoute($uri, $methods, $controller, $permissions, $isAPI)
     {
-        $route = new Route($uri, $methods, $controller, $permissions, $isAPI);
+        $route = new Route("/sloth-admin".$uri, $methods, $controller, $permissions, $isAPI);
         array_push($this->routes, $route);
     }
 

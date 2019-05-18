@@ -8,12 +8,12 @@
 
 namespace slothcms\controllers\authorization;
 
-require_once __DIR__ . "/../ControllerInterface.php";
+require_once __DIR__ . "/../BaseController.php";
 
-use slothcms\controllers\ControllerInterface;
+use SlothCMS\controllers\BaseController;
 
 
-class LoginController implements ControllerInterface {
+class LoginController extends BaseController {
     public function run() {
         $username = filter_input(INPUT_POST, "username");
         $password = filter_input(INPUT_POST, "password");
@@ -45,11 +45,6 @@ class LoginController implements ControllerInterface {
             }
 
         }
-    }
-
-    public function runApi() {
-        header("HTTP/1.0 501 Not Implemented");
-        exit;
     }
 
 
