@@ -10,7 +10,8 @@ namespace slothcms\controllers\authorization;
 
 require_once __DIR__ . "/../BaseController.php";
 
-use SlothCMS\controllers\BaseController;
+use slothcms\controllers\BaseController;
+use slothcms\services\TemplateService;
 
 
 class LoginController extends BaseController {
@@ -19,7 +20,8 @@ class LoginController extends BaseController {
         $password = filter_input(INPUT_POST, "password");
 
         if (strlen($username) == 0 || strlen($password) == null) {
-            readfile(__DIR__ . "/../../views/login.html");
+            $templateService = new TemplateService(__DIR__ . "/../../views/login.html");
+            print($templateService->processTemplate());
         } else {
             $userFound = -1;
 

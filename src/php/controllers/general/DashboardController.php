@@ -9,7 +9,7 @@
 namespace slothcms\controllers\general;
 
 require_once __DIR__ . "/../ControllerInterface.php";
-require_once __DIR__ . "/../../services/TemplateService.php";
+require_once __DIR__ . "/../../services/template/TemplateService.php";
 
 use slothcms\controllers\ControllerInterface;
 use slothcms\services\TemplateService;

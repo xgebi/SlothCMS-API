@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SlothCMS\controllers;
+namespace slothcms\controllers;
 
 require_once __DIR__ . "ControllerInterface.php";
 

@@ -14,10 +14,10 @@ require_once __DIR__ . "/../../models/Configuration.php";
 require_once __DIR__ . "/../../models/Users.php";
 require_once __DIR__ . "/../../models/User.php";
 
-use SlothCMS\Controllers\ControllerInterface;
-use SlothCMS\Models\Configuration;
-use SlothCMS\Models\User;
-use SlothCMS\Models\Users;
+use slothcms\Controllers\ControllerInterface;
+use slothcms\Models\Configuration;
+use slothcms\Models\User;
+use slothcms\Models\Users;
 
 class InitialConfigurationController implements ControllerInterface {
 

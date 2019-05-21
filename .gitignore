@@ -6,3 +6,4 @@ src/sloth-admin/dist
 .vscode
 sloth.conf.json
 sloth.users.json
+/node_modules

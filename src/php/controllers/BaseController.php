@@ -1,10 +1,10 @@
 <?php
 
 
-namespace SlothCMS\controllers;
+namespace slothcms\controllers;
 
-require_once __DIR__ . "ControllerInterface.php";
-require_once __DIR__ . "/../services/authentication/AuthorizationService.php";
+require_once __DIR__ . "/ControllerInterface.php";
+require_once __DIR__ . "/../services/auth/AuthService.php";
 
 class BaseController implements ControllerInterface {
     public function run() {

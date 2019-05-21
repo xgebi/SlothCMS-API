@@ -8,8 +8,8 @@
 
 namespace slothcms\controllers;
 
-require_once __DIR__."BaseController.php.php";
-require_once __DIR__ . "/../services/TemplateService.php";
+require_once __DIR__."/BaseController.php";
+require_once __DIR__ . "/../services/template/TemplateService.php";
 
 use slothcms\services\TemplateService;
 

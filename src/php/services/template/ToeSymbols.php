@@ -6,7 +6,7 @@
  * Time: 3:12 PM
  */
 
-namespace SlothCMS\services;
+namespace slothcms\services;
 
 
 class ToeSymbols {

@@ -6,7 +6,7 @@
  * Time: 1:21 AM
  */
 
-namespace SlothCMS\models;
+namespace slothcms\models;
 
 class UserTest extends \PHPUnit_Framework_TestCase {
 

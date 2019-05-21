@@ -6,7 +6,7 @@
  * Time: 9:51 PM
  */
 
-namespace SlothCMS\services;
+namespace slothcms\services;
 
 class TemplateServiceTest extends \PHPUnit_Framework_TestCase {
 

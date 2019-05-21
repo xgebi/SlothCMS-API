@@ -67,6 +67,4 @@ class Route
     {
         return $this->isAPI;
     }
-
-
 }

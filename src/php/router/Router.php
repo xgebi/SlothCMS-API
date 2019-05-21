@@ -8,6 +8,8 @@
 
 namespace slothcms\router;
 
+use slothcms\php\services\auth\AuthService;
+
 require_once "Route.php";
 
 class Router
@@ -26,10 +28,16 @@ class Router
     }
 
     public function run($uri, $method = 'GET') {
-        // @TODO handle permissions here
 
         foreach ($this->routes as $route) {
             if (preg_match("/".preg_quote($route->getUri(), "/") . "/", $uri)) {
+                if ($route->getPermissions() > 0) {
+                    $authService = new AuthService();
+                    if (!$_SESSION['token'] || !$authService->isAuthenticated($_SESSION['token'])) {
+                        header('Location: /sloth-admin/login');
+                    }
+                }
+
                 if ($route->isAPI()) {
                     $this->runApiRequest();
                     return;
