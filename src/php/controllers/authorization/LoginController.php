@@ -20,7 +20,8 @@ class LoginController extends BaseController {
         $password = filter_input(INPUT_POST, "password");
 
         if (strlen($username) == 0 || strlen($password) == null) {
-            $templateService = new TemplateService(__DIR__ . "/../../views/login.html");
+            $template = file_get_contents(__DIR__ . "/../../views/login.html");
+            $templateService = new TemplateService(__DIR__ . "/../../views/", $template);
             print($templateService->processTemplate());
         } else {
             $userFound = -1;

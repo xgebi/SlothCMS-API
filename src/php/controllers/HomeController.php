@@ -16,7 +16,7 @@ use slothcms\services\TemplateService;
 class HomeController extends BaseController
 {
     public function run($args = null) {
-        $templateService = new TemplateService(file_get_contents(__DIR__ . "/../views/home.html"));
+        $templateService = new TemplateService(__DIR__ . "/../../views/", file_get_contents(__DIR__ . "/../views/home.html"));
         print($templateService->processTemplate());
     }
 
