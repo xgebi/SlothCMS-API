@@ -4,3 +4,5 @@ CREATE TABLE settings (
     settings_value      VARCHAR(255),
     section_id          VARCHAR(40)
 );
+
+ALTER TABLE settings ADD COLUMN setting_type VARCHAR(100) DEFAULT "core";
