@@ -13,6 +13,7 @@ require_once "ToeSymbols.php";
 class TemplateService {
     private $template;
     private $args;
+    private $templateUri;
 
     private static $OPENING_TAG = "<#";
     private static $CLOSING_TAG = "#>";
@@ -24,9 +25,10 @@ class TemplateService {
      * @param $template
      * @param $args
      */
-    public function __construct($template, $args = null) {
+    public function __construct($templateUri, $template, $args = null) {
         $this->template = $template;
         $this->args = $args;
+        $this->templateUri = $templateUri;
     }
 
     public function processTemplate($openingTagPosition = -1 ,$closingTagPosition = -1) {
@@ -75,8 +77,8 @@ class TemplateService {
 
     private function processImportStatement($toeCommand, $start, $end) {
         $cmdParameterArray = explode(" ", $toeCommand);
-        if (count($cmdParameterArray) == 2 && file_exists(__DIR__ . "/../views/" . $cmdParameterArray[1] . ".html")) {
-            $imported = file_get_contents(__DIR__ . "/../views/" . $cmdParameterArray[1] . ".html");
+        if (count($cmdParameterArray) == 2 && file_exists($this->templateUri . $cmdParameterArray[1] . ".html")) {
+            $imported = file_get_contents($this->templateUri . $cmdParameterArray[1] . ".html");
             $this->template = substr_replace($this->template, $imported, $start, ($end + 2) - $start);
         } else {
             $this->template = substr_replace($this->template, "", $start, ($end + 2) - $start);
