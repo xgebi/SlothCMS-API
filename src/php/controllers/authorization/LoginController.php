@@ -15,13 +15,17 @@ use slothcms\services\TemplateService;
 
 
 class LoginController extends BaseController {
+    private $pageSettings = [
+      "sl_page_title" => "wizard"
+    ];
+
     public function run() {
         $username = filter_input(INPUT_POST, "username");
         $password = filter_input(INPUT_POST, "password");
 
         if (strlen($username) == 0 || strlen($password) == null) {
             $template = file_get_contents(__DIR__ . "/../../views/login.html");
-            $templateService = new TemplateService(__DIR__ . "/../../views/", $template);
+            $templateService = new TemplateService(__DIR__ . "/../../views/", $template, $this->pageSettings);
             print($templateService->processTemplate());
         } else {
             $userFound = -1;

@@ -8,26 +8,30 @@
 
 namespace slothcms\services;
 
+require_once __DIR__ . "/CoreObjectsStack.php";
+
+use slothcms\php\services\template\CoreObjectsStack;
+
 require_once "ToeSymbols.php";
 
 class TemplateService {
     private $template;
-    private $args;
     private $templateUri;
 
     private static $OPENING_TAG = "<#";
     private static $CLOSING_TAG = "#>";
 
     private $variableStack = [];
+    private $coreObjectsStack;
 
     /**
      * TemplateService constructor.
      * @param $template
      * @param $args
      */
-    public function __construct($templateUri, $template, $args = null) {
+    public function __construct($templateUri, $template, $objectsStack = null) {
         $this->template = $template;
-        $this->args = $args;
+        $this->coreObjectsStack = new CoreObjectsStack($objectsStack);
         $this->templateUri = $templateUri;
     }
 
@@ -228,55 +232,68 @@ class TemplateService {
     }
 
     private function evaluateExpression($expression) {
-        if (strpos($expression, ToeSymbols::Equals)) {
-            $exploded = explode(ToeSymbols::Equals, $expression);
-            if ($this->variableStack[trim($exploded[0])] == trim($exploded[1]) ||
-                $this->variableStack[trim($exploded[1])] == trim($exploded[0])) {
-                return true;
-            }
-            return false;
-        }
-        if (strpos($expression, ToeSymbols::IsNot)) {
-            $exploded = explode(ToeSymbols::IsNot, $expression);
-            if ($this->variableStack[trim($exploded[0])] == trim($exploded[1]) ||
-                $this->variableStack[trim($exploded[1])] == trim($exploded[0])) {
-                return false;
-            }
-            return true;
-        }
 
         if (strpos($expression, ToeSymbols::GreaterEqualThan)) {
             $exploded = explode(ToeSymbols::GreaterEqualThan, $expression);
-            if ($this->variableStack[trim($exploded[0])] >= trim($exploded[1]) ||
-                $this->variableStack[trim($exploded[1])] >= trim($exploded[0])) {
+            if ($this->determineItem($exploded[0]) >= $this->determineItem($exploded[1])) {
                 return true;
             }
             return false;
         }
         if (strpos($expression, ToeSymbols::LessEqualThan)) {
             $exploded = explode(ToeSymbols::LessEqualThan, $expression);
-            if ($this->variableStack[trim($exploded[0])] <= trim($exploded[1]) ||
-                $this->variableStack[trim($exploded[1])] <= trim($exploded[0])) {
+            if ($this->determineItem($exploded[0]) <= $this->determineItem($exploded[1])) {
                 return true;
             }
             return false;
         }
         if (strpos($expression, ToeSymbols::GreaterThan)) {
             $exploded = explode(ToeSymbols::GreaterThan, $expression);
-            if ($this->variableStack[trim($exploded[0])] > trim($exploded[1]) ||
-                $this->variableStack[trim($exploded[1])] > trim($exploded[0])) {
+            if ($this->determineItem($exploded[0]) > $this->determineItem($exploded[1])) {
                 return true;
             }
             return false;
         }
         if (strpos($expression, ToeSymbols::LessThan)) {
             $exploded = explode(ToeSymbols::LessThan, $expression);
-            if ($this->variableStack[trim($exploded[0])] < trim($exploded[1]) ||
-                $this->variableStack[trim($exploded[1])] < trim($exploded[0])) {
+            if ($this->determineItem($exploded[0]) < $this->determineItem($exploded[1])) {
                 return true;
             }
             return false;
         }
+
+        if (strpos($expression, ToeSymbols::Equals)) {
+            $exploded = explode(ToeSymbols::Equals, $expression);
+            if ($this->determineItem($exploded[0]) == $this->determineItem($exploded[1])) {
+                return true;
+            }
+            return false;
+        }
+
+        if (strpos($expression, ToeSymbols::IsNot)) {
+            $exploded = explode(ToeSymbols::IsNot, $expression);
+            return $this->determineItem($exploded[0]) != $this->determineItem($exploded[1]);
+        }
+    }
+
+    private function determineItem($item) {
+        $item = trim($item);
+        if ((strpos($item, "\"") === 0) || (strpos($item, "'") === 0)) {
+            return substr($item, 1, count($item) - 2);
+        }
+
+        if (is_numeric($item)) {
+            if (strpos($item, ".")) {
+                return floatval($item);
+            }
+            return intval($item);
+        }
+
+        if ($toBeReturned = $this->coreObjectsStack->getItem($item)) {
+            return $toBeReturned;
+        }
+
+        return $this->variableStack[$item];
     }
 
 }
