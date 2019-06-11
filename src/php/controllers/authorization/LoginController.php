@@ -16,7 +16,8 @@ use slothcms\services\TemplateService;
 
 class LoginController extends BaseController {
     private $pageSettings = [
-      "sl_page_title" => "wizard"
+        "sl_page_name" => "login",
+        "sl_page_display_name" => "Log in to SlothCMS"
     ];
 
     public function run() {

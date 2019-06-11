@@ -14,6 +14,8 @@ class ToeSymbols {
     const Print = "=";
     const Assign = "assign";
     const If = "if";
+    const Foreach = "foreach";
+    const While = "while";
 
     const Equals = "==";
     const GreaterThan = ">";

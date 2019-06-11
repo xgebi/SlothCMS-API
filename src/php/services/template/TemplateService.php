@@ -74,6 +74,11 @@ class TemplateService {
                 continue;
             }
 
+            if (is_int(strpos($toeCommand, ToeSymbols::Foreach)) && strpos($toeCommand, ToeSymbols::Foreach) == 0) {
+                $this->processForeachKeyword($toeCommand, $openingTagPosition, $closingTagPosition);
+                continue;
+            }
+
         }
 
         return $this->template;
@@ -173,6 +178,8 @@ class TemplateService {
         }
 
     }
+
+    private function processForeachKeyword($toeCommand, $start, $end) {}
 
     private function deconstructExpression($expression) {
         $level = 0;
