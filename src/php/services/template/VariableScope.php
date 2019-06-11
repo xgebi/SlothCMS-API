@@ -5,11 +5,11 @@ namespace SlothCMS\php\services\template;
 
 class VariableScope {
     private $id;
-    private $parentId; // TODO this cannot be id, it has to link to the parent Variable Scope
+    private $parentScope;
     private $variableStack = [];
 
-    function __construct($parentId) {
-        $this->parentId = $parentId;
+    function __construct($parentScope) {
+        $this->parentScope = $parentScope;
         $this->id = uniqid("", true);
     }
 
@@ -23,8 +23,8 @@ class VariableScope {
     /**
      * @return mixed
      */
-    public function getParentId() {
-        return $this->parentId;
+    public function getParentScope() {
+        return $this->parentScope;
     }
 
     /**
