@@ -35,7 +35,7 @@ class TemplateService {
         $this->templateUri = $templateUri;
     }
 
-    public function processTemplate($openingTagPosition = -1 ,$closingTagPosition = -1) {
+    public function processTemplate($openingTagPosition = -1 ,$closingTagPosition = -1, $localVarScope) {
         $isFinished = false;
         $index = 0;
         while (!$isFinished) {
@@ -150,6 +150,8 @@ class TemplateService {
                     $this->template = substr_replace($this->template, "", $possibleEndif, ($endIfPos + 2) - $possibleEndif );
 
                     $this->template = substr_replace($this->template, "", $start,  ($end + 2) - $start);
+
+                    // TODO rework this part for new variable scope mechanics
                 } else {
                     $lastEndIfOccurrence = strpos($this->template, "<# endif", $end);
 
@@ -161,6 +163,7 @@ class TemplateService {
                             $this->template = substr_replace($this->template, "", $lastEndIfOccurrence, ($endIfPos + 2) - $lastEndIfOccurrence );
 
                             $this->template = substr_replace($this->template, "", $start,  ($end + 2) - $start);
+                            // TODO rework this part for new variable scope mechanics
                             break;
                         } else {
                             $lastEndIfOccurrence = strpos($this->template, "<# endif", $lastEndIfOccurrence + 1);
