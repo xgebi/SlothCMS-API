@@ -11,6 +11,7 @@ namespace slothcms\services;
 require_once __DIR__ . "/CoreObjectsStack.php";
 
 use slothcms\php\services\template\CoreObjectsStack;
+use SlothCMS\php\services\template\VariableScope;
 
 require_once "ToeSymbols.php";
 
@@ -21,7 +22,7 @@ class TemplateService {
     private static $OPENING_TAG = "<#";
     private static $CLOSING_TAG = "#>";
 
-    private $variableStack = [];
+    private $variableStack;
     private $coreObjectsStack;
 
     /**
@@ -29,13 +30,19 @@ class TemplateService {
      * @param $template
      * @param $args
      */
-    public function __construct($templateUri, $template, $objectsStack = null) {
+    public function __construct($templateUri, $template, $objectsStack = null, $localVarScope = null) {
         $this->template = $template;
         $this->coreObjectsStack = new CoreObjectsStack($objectsStack);
         $this->templateUri = $templateUri;
+        if (!$localVarScope) {
+            $this->variableStack = new VariableScope(null);
+        } else {
+            $this->variableStack = $localVarScope;
+        }
     }
 
-    public function processTemplate($openingTagPosition = -1 ,$closingTagPosition = -1, $localVarScope) {
+    public function processTemplate($openingTagPosition = -1 ,$closingTagPosition = -1) {
+
         $isFinished = false;
         $index = 0;
         while (!$isFinished) {
