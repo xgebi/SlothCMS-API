@@ -1,12 +1,11 @@
 <?php
 
-
 namespace SlothCMS\php\services\template;
 
 
 class VariableScope {
     private $id;
-    private $parentId;
+    private $parentId; // TODO this cannot be id, it has to link to the parent Variable Scope
     private $variableStack = [];
 
     function __construct($parentId) {
